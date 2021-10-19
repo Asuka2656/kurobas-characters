@@ -20,11 +20,11 @@ body{
   text-align: center;
 }
 
-td{
+td:not(.seirin table tr td){
   padding: 30px;
 }
 
-table{
+table:not(.seirin table){
   width: 100%;
   border-collapse: collapse;
   font-size: xx-large;
