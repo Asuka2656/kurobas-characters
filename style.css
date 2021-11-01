@@ -63,7 +63,7 @@ table:not(.seirin table) {
     font-weight: bolder;
 }
 
-.back a {
+.back a:not(.forSchool, .forPosition, .forName, .forGrade) {
     margin: 10%;
 }
 
