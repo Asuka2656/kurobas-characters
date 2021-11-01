@@ -63,10 +63,6 @@ table:not(.seirin table) {
     font-weight: bolder;
 }
 
-.back a:not(.forSchool, .forPosition, .forName, .forGrade) {
-    margin: 10%;
-}
-
 .charName {
     width: 50%;
 }
@@ -322,6 +318,11 @@ td.chars {
     margin: 1%;
 }
 .forName{
+    display: block;
+    margin: 1%;
+}
+
+.forTop{
     display: block;
     margin: 1%;
 }
