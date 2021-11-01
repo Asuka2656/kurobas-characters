@@ -307,6 +307,26 @@ td.chars {
     text-align: center;
 }
 
+.forSchool{
+    display: block;
+}
+
+.forPosition{
+    display: block;
+}
+
+.forGrade{
+    display: block;
+}
+.forName{
+    display: block;
+}
+
+.hide{
+
+}
+
+
 /* 立ち絵の場所指定 */
 
 .dialogue {
