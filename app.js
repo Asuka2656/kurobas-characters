@@ -1,7 +1,7 @@
 $(function () {
     let ref = document.referrer;
     console.log(ref + 'から訪れました');
-    
+
     $("#school").on('click', school);
     $("#position").on('click', position);
     $("#grade").on('click', grade);
@@ -19,6 +19,8 @@ $(function () {
     } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/g.')){
         alert('学年ページから来ました');
         grade();
+    } else{
+        alert('その他のページから来ました');
     }
 
     function school () {
