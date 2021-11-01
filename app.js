@@ -7,20 +7,32 @@ $(function () {
     $("#grade").on('click', grade);
     $("#name").on('click', name);
 
-    if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/s.')){
+    if(page === ('school')){
         console.log('学校ページから来ました');
         school();
-    } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/p.')){
+    } else if(page === ('position')){
         console.log('ポジションページから来ました');
         position();
-    } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/n.')){
+    } else if(page === ('name')){
         console.log('名前ページから来ました');
         name();
-    } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/g.')){
-        alert('学年ページから来ました');
+    } else if(page === ('grade')){
+        console.log('学年ページから来ました');
         grade();
     } else{
-        console.log('その他のページから来ました');
+        alert('その他のページから来ました');
+    };
+    let page = ('school');
+    if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/s.')){
+        page = ('school');
+    } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/p.')){
+        page = ('position');
+    } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/n.')){
+        page = ('name');
+    } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/g.')){
+        page = ('grade');
+    } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/index.html')){
+        page = ('other');
     };
 
     function school () {
