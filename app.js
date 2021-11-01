@@ -8,20 +8,20 @@ $(function () {
     $("#name").on('click', name);
 
     if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/s.')){
-        alert('学校ページから来ました');
+        console.log('学校ページから来ました');
         school();
     } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/p.')){
-        alert('ポジションページから来ました');
+        console.log('ポジションページから来ました');
         position();
     } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/n.')){
-        alert('名前ページから来ました');
+        console.log('名前ページから来ました');
         name();
     } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/g.')){
         alert('学年ページから来ました');
         grade();
     } else{
-        alert('その他のページから来ました');
-    }
+        console.log('その他のページから来ました');
+    };
 
     function school () {
         $("#table1").css("display", "block");
