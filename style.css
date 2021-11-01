@@ -1,230 +1,321 @@
 /* ↓ここから全ページの設定 */
 
-body{
-  font-family: sans-serif;
-  padding: 1% 5%;
+body {
+    font-family: sans-serif;
+    padding: 1% 5%;
 }
 
-.headerInner{
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.headerInner {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo{
-  width: 35%;
+.logo {
+    width: 35%;
 }
 
-#schools,#grades,.members{
-  text-align: center;
+#schools, #grades, .members {
+    text-align: center;
 }
 
-td:not(.seirin table tr td){
-  padding: 30px;
+td:not(.seirin table tr td, td.chars, table#names tr td, table#positions tr td) {
+    padding: 30px;
 }
 
-table:not(.seirin table){
-  width: 100%;
-  border-collapse: collapse;
-  font-size: xx-large;
-  font-weight: bolder;
+table:not(.seirin table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: xx-large;
+    font-weight: bolder;
 }
 
-.footerInner{
-  text-align: center;
-  font-size: larger;
-  margin: 5%;
+.footerInner {
+    text-align: center;
+    font-size: larger;
+    margin: 5%;
 }
 
-.forSite{
-  background: rgb(147, 236, 229);
-  color: rgb(3, 5, 95);
-  width: 230px;
-  height: 50px;
-  display: inline-block;
-  border-radius: 15px;
-  text-align: center;
-  text-decoration: none;
-  line-height: 50px;
-  font-size: 25px;
-  transition: 200ms;
+.forSite {
+    background: rgb(147, 236, 229);
+    color: rgb(3, 5, 95);
+    width: 230px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 50px;
+    font-size: 25px;
+    transition: 200ms;
 }
 
-.forSite:hover{
-  background: rgb(3, 5, 95);
-  color: rgb(147, 236, 229);
-  transform: scale(1.1, 1.1);
+.forSite:hover {
+    background: rgb(3, 5, 95);
+    color: rgb(147, 236, 229);
+    transform: scale(1.1, 1.1);
 }
 
-.back{
-  text-align: end;
-  font-size: large;
-  font-weight: bolder;
+.back {
+    text-align: end;
+    font-size: large;
+    font-weight: bolder;
 }
 
-.back a{
-  margin: 10%;
+.back a {
+    margin: 10%;
 }
 
-.charName{
-  width: 50%;
+.charName {
+    width: 50%;
 }
 
 /* ↑ここまで全ページの設定 */
 
 /* ↓ここから各ページの背景の設定 */
 
-.lightBlue{
-  background-image: url(./i.others/ball.goal.svg);
-  background-size: 80px;
-  vertical-align: bottom
+.lightBlue {
+    background-image: url(./i.backgrounds/ball.goal.svg);
+    background-size: 80px;
+    vertical-align: bottom
 }
 
-.orange{
-  background-image: url(./i.others/ball.nigo.svg);
-  background-size: 80px;
-  vertical-align: bottom
+.blue {
+    background-image: url(./i.backgrounds/guitar.microphone.svg);
+    background-size: 80px;
+    vertical-align: bottom;
 }
 
-.seirin{
-  background-image: url(./i.badges/seirin.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  padding-left: 10%;
+.orange {
+    background-image: url(./i.backgrounds/ball.nigo.svg);
+    background-size: 80px;
+    vertical-align: bottom
+}
+
+.deepOrange {
+    background-image: url(./i.backgrounds/tape.painapple.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.red {
+    background-image: url(./i.backgrounds/ball.coke.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.pink {
+    background-image: url(./i.backgrounds/ball.totoro.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.gray {
+    background-image: url(./i.backgrounds/ball.scissors.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.rainbow {
+    background-image: url(./i.backgrounds/ball.rainbow.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.green {
+    background-image: url(./i.backgrounds/ball.spider.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.akashi {
+    background-image: url(./i.backgrounds/forPG.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.midorima {
+    background-image: url(./i.backgrounds/forSG.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.kise {
+    background-image: url(./i.backgrounds/forSF.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.aomine {
+    background-image: url(./i.backgrounds/forPF.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.murasakibara {
+    background-image: url(./i.backgrounds/forC.svg);
+    background-size: 80px;
+    vertical-align: bottom;
+}
+
+.momoi{
+    background-image: url(./i.backgrounds/forM.svg);
+    background-size: 80px;
+    vertical-align: bottom;
 }
 
 /* ↑ここまで各ページの背景の設定 */
 
+/* ↓ここから各キャラページの背景の設定 */
+
+.seirin {
+    background-image: url(./i.badges/seirin.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-left: 10%;
+}
+
+/* ↓ここまで各キャラページの背景の設定 */
+
 /* ↓ここからトップページの設定 */
 
-.keyVisual{
-  text-align: center;
+.keyVisual {
+    text-align: center;
 }
 
-.sevens{
-  width: 100%;
+.sevens {
+    width: 100%;
 }
 
-.tab{
-  color: white;
-  text-align: center;
+.tab {
+    color: white;
+    text-align: center;
 }
 
-#school{
-  background: #4A75A2;
-  border-radius: 70px 70px 0px 0px;
-  transition: 200ms;
+#school {
+    background: #4A75A2;
+    border-radius: 70px 70px 0px 0px;
+    transition: 200ms;
+    pointer-events: none;
 }
 
-#school:hover{
-  color: #4A75A2;
-  background: white;
+#position {
+    background: #145A96;
+    border-radius: 70px 70px 0px 0px;
+    transition: 200ms;
+    pointer-events: auto;
 }
 
-#position{
-  background: #145A96;
-  border-radius: 70px 70px 0px 0px;
-  transition: 200ms;
+#name {
+    background: #054286;
+    border-radius: 70px 70px 0px 0px;
+    transition: 200ms;
+    pointer-events: auto;
 }
 
-#position:hover{
-  color: #145A96;
-  background: white;
+#grade {
+    background: #0f2b87;
+    border-radius: 70px 70px 0px 0px;
+    transition: 200ms;
+    pointer-events: auto;
 }
 
-#grade{
-  background: #054286;
-  border-radius: 70px 70px 0px 0px;
-  transition: 200ms;
+#school:hover {
+    color: #4A75A2;
+    background: white;
 }
 
-#grade:hover{
-  color: #054286;
-  background: white;
+#position:hover {
+    color: #145A96;
+    background: white;
 }
 
-#name{
-  background: #0f2b87;
-  border-radius: 70px 70px 0px 0px;
-  transition: 200ms;
+#name:hover {
+    color: #054286;
+    background: white;
 }
 
-#name:hover{
-  color: #0f2b87;
-  background: white;
+#grade:hover {
+    color: #0f2b87;
+    background: white;
 }
 
-.table1{
-  background:
-  linear-gradient(#4A75A2 0%, #4A75A2 3%, transparent 3%, transparent 97%, #4A75A2 97%, #4A75A2 100%),
-  linear-gradient(to right, #4A75A2 0%, #4A75A2 3%, white 3%, white 97%, #4A75A2 97%, #4A75A2 100%);
-  padding: 5%;
+#table1 {
+    background: linear-gradient(#4A75A2 0%, #4A75A2 4%, transparent 4%, transparent 96%, #4A75A2 96%, #4A75A2 100%), linear-gradient(to right, #4A75A2 0%, #4A75A2 3%, white 3%, white 97%, #4A75A2 97%, #4A75A2 100%);
+    padding: 5%;
+    display: block;
 }
 
-.table2{
-  background:
-  linear-gradient(#145A96 0%, #145A96 6%, transparent 6%, transparent 94%, #145A96 94%, #145A96 100%),
-  linear-gradient(to right, #145A96 0%, #145A96 3%, white 3%, white 97%, #145A96 97%, #145A96 100%);
-  padding: 5%;
+#table2 {
+    background: linear-gradient(#145A96 0%, #145A96 6.5%, transparent 6.5%, transparent 93.5%, #145A96 93.5%, #145A96 100%), linear-gradient(to right, #145A96 0%, #145A96 3%, white 3%, white 97%, #145A96 97%, #145A96 100%);
+    padding: 5%;
+    display: none;
 }
 
-.table3{
-  background:
-  linear-gradient(#054286 0%, #054286 15%, transparent 15%, transparent 85%, #054286 85%, #054286 100%),
-  linear-gradient(to right, #054286 0%, #054286 3%, white 3%, white 97%, #054286 97%, #054286 100%);
-  padding: 5%;
+#table3 {
+    background: linear-gradient(#0f2b87 0%, #0f2b87 15%, transparent 15%, transparent 85%, #0f2b87 85%, #0f2b87 100%), linear-gradient(to right, #0f2b87 0%, #0f2b87 3%, white 3%, white 97%, #0f2b87 97%, #0f2b87 100%);
+    padding: 5%;
+    display: none;
 }
 
-.table4{
-  background:
-  linear-gradient(#0f2b87 0%, #0f2b87 7%, transparent 7%, transparent 93%, #0f2b87 93%, #0f2b87 100%),
-  linear-gradient(to right, #0f2b87 0%, #0f2b87 3%, white 3%, white 97%, #0f2b87 97%, #0f2b87 100%);
-  padding: 5%;
+#table4 {
+    background: linear-gradient(#054286 0%, #054286 7%, transparent 7%, transparent 93%, #054286 93%, #054286 100%), linear-gradient(to right, #054286 0%, #054286 3%, white 3%, white 97%, #054286 97%, #054286 100%);
+    padding: 5%;
+    display: none;
 }
 
-table#schools tr td{
-  width: 33%;
+table#schools tr td {
+    width: 33%;
 }
 
-table#positions td,table#names td:not(.space){
-  padding-left: 10%;
+table#positions tr td {
+    padding: 30px 0px 30px 7%;
 }
 
-td.space{
-  padding-left: 17%;
+table#names td:not(td.space) {
+    padding-left: 10%;
+}
+
+td.space {
+    padding: 30px 0px 30px 17%;
 }
 
 /* ↑ここまでトップページの設定 */
 
 /* ↓ここからミドルページの設定 */
-.direction{
-  padding: 0% 3%;
+
+.direction {
+    padding: 0% 3%;
 }
 
-.members img{
-  border-radius: 10%;
+.members img {
+    border-radius: 10%;
 }
 
 /* ↑ここまでミドルページの設定 */
 
 /* ↓ここからキャラページの設定 */
 
-p.profile{
-  font-size: 200%;
+td.caps {
+    padding-left: 10%;
+    width: 35%;
 }
 
-td.chars{
-  width: 40%;
-  text-align: center;
+td.chars {
+    width: 40%;
+    text-align: center;
 }
 
-.dialogue{
-  text-align: center;
-  font-size: xx-large;
-  font-weight: bolder;
+/* 立ち絵の場所指定 */
+
+.dialogue {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: serif;
 }
 
-.relate img{
-  border-radius: 10%;
+.relate img {
+    border-radius: 10%;
 }
