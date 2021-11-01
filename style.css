@@ -309,21 +309,25 @@ td.chars {
 
 .forSchool{
     display: block;
+    margin: 1%;
 }
 
 .forPosition{
     display: block;
+    margin: 1%;
 }
 
 .forGrade{
     display: block;
+    margin: 1%;
 }
 .forName{
     display: block;
+    margin: 1%;
 }
 
 .hide{
-
+    margin: 1%;
 }
 
 
