@@ -1,6 +1,6 @@
 $(function () {
     let ref = document.referrer;
-        let page = ('school');
+    let page = ('school');
     if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/s.')){
         page = ('school');
     } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/h.middle/p.')){
@@ -12,6 +12,7 @@ $(function () {
     } else if(ref.includes('https://satsuki-mito.github.io/kurobas-charactors/index.html')){
         page = ('other');
     };
+
     console.log(ref + 'から訪れました');
 
     $("#school").on('click', school);
@@ -32,10 +33,8 @@ $(function () {
         console.log('学年ページから来ました');
         grade();
     } else{
-        alert('その他のページから来ました');
+        console.log('その他のページから来ました');
     };
-
-
     function school () {
         $("#table1").css("display", "block");
         $("#table2").css("display", "none");
