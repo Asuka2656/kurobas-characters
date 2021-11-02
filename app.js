@@ -4,11 +4,9 @@ $(function () {
 
     let page = (null);
     //変数「page」を設定（初期値はカラ）
-    
-    //あいうえお
 
     getCsv('https://satsuki-mito.github.io/kurobas-charactors/array.csv');
-    console.log(getCsv);
+    console.log(res);
 
     let chars = [
         ['黒子', 'くろこ', 'テツヤ', null, 'seirin', 'lightBlue', 'kuroko', 'tetsuya', '私立誠凛高校1年B組6番', '11', '不明', '168', '57', '1', '31', '読書・人間観察', '手品', 'マジバのバニラシェイク', '荻原 シゲヒロ', '小野 賢章さん', 'tetsuya.k', '　本作の主人公。とにかく影が薄い。プレイスタイルは、そのただでさえ薄い影をミスディレクションという技術で更に薄め、パスの中継役になること。自らを影と称し、黒子が「光」と呼ぶ、圧倒的なプレイスキルと存在感を持つ選手のサポートに徹する。', '　得意技はタップパス。目立たないのが大前提の彼は、コートで一番注目を浴びるボールを長時間キープ出来ないが、人間観察で鍛えた洞察力で瞬時にボールを回す。', '「僕は……影だ」', 'AomineR', 'OgiwaraR', 'KagamiR', 'NigoR'],
