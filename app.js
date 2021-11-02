@@ -5,7 +5,7 @@ $(function () {
     let page = (null);
     //変数「page」を設定（初期値はカラ）
 
-    getCsv(Users/satsuki/workspace/creations/kurobas/array.csv);
+    getCsv(https://satsuki-mito.github.io/kurobas-charactors/array.csv);
     console.log(getCsv);
 
     let chars = [
