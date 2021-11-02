@@ -5,8 +5,8 @@ $(function () {
     let page = (null);
     //変数「page」を設定（初期値はカラ）
 
-    getCsv('https://satsuki-mito.github.io/kurobas-charactors/array.csv');
-    console.log(res);
+    var data = csvToArray("array.csv");
+    alert(data[0]);
 
     let chars = [
         ['黒子', 'くろこ', 'テツヤ', null, 'seirin', 'lightBlue', 'kuroko', 'tetsuya', '私立誠凛高校1年B組6番', '11', '不明', '168', '57', '1', '31', '読書・人間観察', '手品', 'マジバのバニラシェイク', '荻原 シゲヒロ', '小野 賢章さん', 'tetsuya.k', '　本作の主人公。とにかく影が薄い。プレイスタイルは、そのただでさえ薄い影をミスディレクションという技術で更に薄め、パスの中継役になること。自らを影と称し、黒子が「光」と呼ぶ、圧倒的なプレイスキルと存在感を持つ選手のサポートに徹する。', '　得意技はタップパス。目立たないのが大前提の彼は、コートで一番注目を浴びるボールを長時間キープ出来ないが、人間観察で鍛えた洞察力で瞬時にボールを回す。', '「僕は……影だ」', 'AomineR', 'OgiwaraR', 'KagamiR', 'NigoR'],
@@ -97,32 +97,23 @@ $(function () {
     //「page」の内容によってそれぞれの関数を呼び出し。
     //ついでにデバッグ用。「page」の内容が合ってるか確認。
 
-    function getCsv(url){
-        //CSVファイルを文字列で取得。
-        var txt = new XMLHttpRequest();
-        txt.open('get', url, false);
-        txt.send();
-      
-        //改行ごとに配列化
-        var arr = txt.responseText.split('\n');
-      
-        //1次元配列を2次元配列に変換
-        var res = [];
-        for(var i = 0; i < arr.length; i++){
-          //空白行が出てきた時点で終了
-          if(arr[i] == '') break;
-      
-          //","ごとに配列化
-          res[i] = arr[i].split(',');
-      
-          for(var i2 = 0; i2 < res[i].length; i2++){
-            //数字の場合は「"」を削除
-            if(res[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)){
-              res[i][i2] = parseFloat(res[i][i2].replace('"', ''));
-            };
-          };
-        };
-    };
+    // CSVファイル読み込み
+    function csvToArray(path) {
+        var csvData = new Array();
+        var data = new XMLHttpRequest();
+        data.open("GET", path, false);
+        data.send(null);
+        var LF = String.fromCharCode(10);
+        var lines = data.responseText.split(LF);
+        for (var i = 0; i < lines.length; ++i) {
+            var cells = lines[i].split(",");
+            if (cells.length != 1) {
+                csvData.push(cells);
+            }
+        }
+        return csvData;
+    }
+
 
     function school() {
         $("#table1").css("display", "block");
