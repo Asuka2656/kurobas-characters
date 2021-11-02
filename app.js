@@ -5,19 +5,18 @@ $(function () {
     let page = (null);
     //変数「page」を設定（初期値はカラ）
 
-    var data = csvToArray("array.csv");
-    console.log(data[0]);
+    getCSV(); //最初に実行される
 
     let chars = [
         ['黒子', 'くろこ', 'テツヤ', null, 'seirin', 'lightBlue', 'kuroko', 'tetsuya', '私立誠凛高校1年B組6番', '11', '不明', '168', '57', '1', '31', '読書・人間観察', '手品', 'マジバのバニラシェイク', '荻原 シゲヒロ', '小野 賢章さん', 'tetsuya.k', '　本作の主人公。とにかく影が薄い。プレイスタイルは、そのただでさえ薄い影をミスディレクションという技術で更に薄め、パスの中継役になること。自らを影と称し、黒子が「光」と呼ぶ、圧倒的なプレイスキルと存在感を持つ選手のサポートに徹する。', '　得意技はタップパス。目立たないのが大前提の彼は、コートで一番注目を浴びるボールを長時間キープ出来ないが、人間観察で鍛えた洞察力で瞬時にボールを回す。', '「僕は……影だ」', 'AomineR', 'OgiwaraR', 'KagamiR', 'NigoR'],
         ['火神', 'かがみ', '大我', 'たいが', 'seirin'],
     ];
 
-//     for (var a = 0; a < chars.length; a++) {
-//         for (let i = 0; i < chars[a].length - 1; i++) {
-//             console.log(chars[a][i]);
-//         };
-//     };
+    for (var a = 0; a < chars.length; a++) {
+        for (let i = 0; i < chars[a].length - 1; i++) {
+            console.log(chars[a][i]);
+        };
+    };
 
     // var small = null;
     // var big = null;
@@ -97,23 +96,31 @@ $(function () {
     //「page」の内容によってそれぞれの関数を呼び出し。
     //ついでにデバッグ用。「page」の内容が合ってるか確認。
 
-    // CSVファイル読み込み
-    function csvToArray(path) {
-        var csvData = new Array();
-        var data = new XMLHttpRequest();
-        data.open("GET", path, false);
-        data.send(null);
-        var LF = String.fromCharCode(10);
-        var lines = data.responseText.split(LF);
-        for (var i = 0; i < lines.length; ++i) {
-            var cells = lines[i].split(",");
-            if (cells.length != 1) {
-                csvData.push(cells);
-            }
-        }
-        return csvData;
-    }
 
+    //CSVファイルを読み込む関数getCSV()の定義
+    function getCSV() {
+        var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
+        req.open("get", "https://satsuki-mito.github.io/kurobas-charactors/array.csv", true); // アクセスするファイルを指定
+        req.send(null); // HTTPリクエストの発行
+
+        // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
+        req.onload = function () {
+            convertCSVtoArray(req.responseText); // 渡されるのは読み込んだCSVデータ
+        };
+    };
+
+    // 読み込んだCSVデータを二次元配列に変換する関数convertCSVtoArray()の定義
+    function convertCSVtoArray(str) { // 読み込んだCSVデータが文字列として渡される
+        var result = []; // 最終的な二次元配列を入れるための配列
+        var tmp = str.split("\n"); // 改行を区切り文字として行を要素とした配列を生成
+
+        // 各行ごとにカンマで区切った文字列を要素とした二次元配列を生成
+        for (var i = 0; i < tmp.length; ++i) {
+            result[i] = tmp[i].split(',');
+        };
+
+        console.log(result[1][2]); // 300yen
+    };
 
     function school() {
         $("#table1").css("display", "block");
