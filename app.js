@@ -12,11 +12,11 @@ $(function () {
         ['火神', 'かがみ', '大我', 'たいが', 'seirin'],
     ];
 
-    for (var a = 0; a < chars.length; a++) {
-        for (let i = 0; i < chars[a].length - 1; i++) {
-            console.log(chars[a][i]);
-        };
-    };
+    // for (var a = 0; a < chars.length; a++) {
+    //     for (let i = 0; i < chars[a].length - 1; i++) {
+    //         console.log(chars[a][i]);
+    //     };
+    // };
 
     // var small = null;
     // var big = null;
