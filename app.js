@@ -119,7 +119,7 @@ $(function () {
             result[i] = tmp[i].split(',');
         };
 
-        console.log(result[1][2]); // 300yen
+        console.log(result[0][0]); // 300yen
     };
 
     function school() {
