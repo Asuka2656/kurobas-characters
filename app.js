@@ -78,7 +78,7 @@ $(function () {
             result[i] = tmp[i].split(',');
         };
 
-        console.log(result[0][0]);
+        console.log(result[1][0]);
     };
 
     function Bg(bg) {
