@@ -3,56 +3,15 @@ $(function () {
     //リファラ情報ゲット
 
     let page = (null);
-    //変数「page」を設定（初期値はカラ）
+    //変数「page」を設定（初期値は空）
 
     getCSV(); //最初に実行される
-
-    let chars = [
-        ['黒子', 'くろこ', 'テツヤ', null, 'seirin', 'lightBlue', 'kuroko', 'tetsuya', '私立誠凛高校1年B組6番', '11', '不明', '168', '57', '1', '31', '読書・人間観察', '手品', 'マジバのバニラシェイク', '荻原 シゲヒロ', '小野 賢章さん', 'tetsuya.k', '　本作の主人公。とにかく影が薄い。プレイスタイルは、そのただでさえ薄い影をミスディレクションという技術で更に薄め、パスの中継役になること。自らを影と称し、黒子が「光」と呼ぶ、圧倒的なプレイスキルと存在感を持つ選手のサポートに徹する。', '　得意技はタップパス。目立たないのが大前提の彼は、コートで一番注目を浴びるボールを長時間キープ出来ないが、人間観察で鍛えた洞察力で瞬時にボールを回す。', '「僕は……影だ」', 'AomineR', 'OgiwaraR', 'KagamiR', 'NigoR'],
-        ['火神', 'かがみ', '大我', 'たいが', 'seirin'],
-    ];
 
     // for (var a = 0; a < chars.length; a++) {
     //     for (let i = 0; i < chars[a].length - 1; i++) {
     //         console.log(chars[a][i]);
     //     };
     // };
-
-    // var small = null;
-    // var big = null;
-    // if (chars[a - 1].length === chars[0].length) {
-    //     console.log(chars[a - 1][0] + chars[a - 1][2] + 'までの' + a - 1 + '人分、データの記入が終了しました');
-    // } else if (chars[a - 1].length < chars[0].length) {
-    //     for (var c = 1; small !== null; c++) {
-    //         if (chars[0].length === chars[a - c].length) {
-    //             small = null;
-    //         } else if (chars[0].length !== chars[a - c].length){
-    //             console.log(chars[a - c][0] + chars[a - c][2] + 'のデータに不足があります。');
-    //             small = 1;
-    //             console.log('smallの値は' + small + 'です');
-    //             // console.log('想定外の不具合です（データ不足のif文のなかです）');
-    //         };
-    //     };
-    //     console.log('データ不足のif文の中の、forの外です。')
-    // } else if (chars[a - 1].length > chars[0].length) {
-    //     for (var d = 1; big !== null; d++) {
-    //         if (chars[0].length !== chars[a - c].length) {
-    //             console.log(chars[a - d][0] + chars[a - d][2] + 'のデータに過剰があります。');
-    //             big = 1;
-    //             console.log('bigの値は' + big + 'です');
-    //         } else {
-    //             console.log('想定外の不具合です（データ過剰のif文の中です）');
-    //         };
-    //     };
-    //     console.log('データ過剰のif文の中の、forの外です。')
-    // } else {
-    //     console.log('想定外の不具合です（データが不完全のif文のなかです）')
-    // };
-    // {
-    //     var finish = null;
-    //     for(var b = 1; finish !== null ; b ++){
-    //     };
-
 
     if (ref.includes('/h.middle/s.')) {
         page = ('school');
@@ -119,8 +78,18 @@ $(function () {
             result[i] = tmp[i].split(',');
         };
 
-        console.log(result[0][0]); // 300yen
+        console.log(result[0][0]);
     };
+
+    function Bg(bg) {
+        $("#bgs").css("background-image", "url(./i.backgrounds/" + bg + ".svg")
+    };
+    //引数bgに入れた値によって背景パターンが変わる
+
+    function profBg(badges) {
+        $("#proBg").css("background-image", "url(./i.badges/" + badges + ".svg)");
+    };
+    //引数badgesに入れた値によってプロフィール部分の背景が変わる
 
     function school() {
         $("#table1").css("display", "block");
@@ -191,7 +160,6 @@ $(function () {
     }
     //関数の定義。
     //①それぞれのタブの可視性を変更
-    //②それぞれのタブのクリックイベントを切り替え
+    //②それぞれのタブのクリックイベントの可不可
     //③戻るボタンの可視性を変更
 });
-//
