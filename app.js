@@ -1,8 +1,8 @@
 $(function () {
     let page = (null);
     //変数「page」を設定（初期値は空）
-    getCsv("https://satsuki-mito.github.io/kurobas-charactors/char.csv", char);
-    getCsv("https://satsuki-mito.github.io/kurobas-charactors/middle.csv", middle);
+    getCsv("https://satsuki-mito.github.io/kurobas-characters/char.csv", char);
+    getCsv("https://satsuki-mito.github.io/kurobas-characters/middle.csv", middle);
 
     $("#tab1").click(tab(1));
     $("#tab2").click(tab(2));
