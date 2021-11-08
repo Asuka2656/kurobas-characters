@@ -1,9 +1,8 @@
 $(function () {
     let page = (null);
     //変数「page」を設定（初期値は空）
-    getCsv("https://satsuki-mito.github.io/kurobas-characters/char.csv", char);
-    getCsv("https://satsuki-mito.github.io/kurobas-characters/middle.csv", middle);
-    tab(1);
+    getCSVMiddle();
+    getCSVChar();
     
     $("#tab1").click(tab(1));
     $("#tab2").click(tab(2));
@@ -64,34 +63,34 @@ $(function () {
         console.log(middle[0][0]);
     };
 
-//     function getCsv(url, array){
-//         //CSVファイルを文字列で取得。
-//         var txt = new XMLHttpRequest();
-//         txt.open('get', url, true);
-//         txt.send();
+    // function getCsv(url, array){
+    //     //CSVファイルを文字列で取得。
+    //     var txt = new XMLHttpRequest();
+    //     txt.open('get', url, true);
+    //     txt.send();
       
-//         //改行ごとに配列化
-//         var arr = txt.responseText.split('\n');
+    //     //改行ごとに配列化
+    //     var arr = txt.responseText.split('\n');
       
-//         //1次元配列を2次元配列に変換
-//         var array = [];
-//         for(var i = 0; i < arr.length; i++){
-//           //空白行が出てきた時点で終了
-//           if(arr[i] == '') break;
+    //     //1次元配列を2次元配列に変換
+    //     var array = [];
+    //     for(var i = 0; i < arr.length; i++){
+    //       //空白行が出てきた時点で終了
+    //       if(arr[i] == '') break;
       
-//           //","ごとに配列化
-//           array[i] = arr[i].split(',');
+    //       //","ごとに配列化
+    //       array[i] = arr[i].split(',');
       
-//           for(var i2 = 0; i2 < array[i].length; i2++){
-//             //数字の場合は「"」を削除
-//             if(array[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)){
-//               array[i][i2] = parseFloat(array[i][i2].replace('"', ''));
-//             }
-//           }
-//         }
+    //       for(var i2 = 0; i2 < array[i].length; i2++){
+    //         //数字の場合は「"」を削除
+    //         if(array[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)){
+    //           array[i][i2] = parseFloat(array[i][i2].replace('"', ''));
+    //         }
+    //       }
+    //     }
       
-//         return array;
-//       }
+    //     return array;
+    //   }
 
     function Bg(num) {
         $("#bgs").css("background-image", "url(./i.backgrounds/" + num + ".svg")
