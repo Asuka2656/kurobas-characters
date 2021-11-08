@@ -4,12 +4,10 @@ $(function () {
     getCsv("https://satsuki-mito.github.io/kurobas-charactors/char.csv", char);
     getCsv("https://satsuki-mito.github.io/kurobas-charactors/middle.csv", middle);
 
-    // $("#tab1").click(tab(1));
-    // $("#tab2").click(tab(2));
-    // $("#tab3").click(tab(3));
-    // $("#tab4").click(tab(4));
-
-    console.log(char[10][5]);
+    $("#tab1").click(tab(1));
+    $("#tab2").click(tab(2));
+    $("#tab3").click(tab(3));
+    $("#tab4").click(tab(4));
 
     // for(let i = 1; i <= 28; i ++){
     //     $("#forMiddle" + i).onclick(callMiddle(i));
