@@ -3,6 +3,8 @@ $(function () {
     //変数「page」を設定（初期値は空）
     getCSVMiddle();
     getCSVChar();
+    callMiddle(1);
+    console.log(char[1]);
     
     $("#tab1").click(tab(1));
     $("#tab2").click(tab(2));
@@ -16,7 +18,7 @@ $(function () {
     // char.csvの準備1
     function getCSVChar() {
         var reqChar = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-        reqChar.open("get", "https://satsuki-mito.github.io/kurobas-characters/char.csv", true); // アクセスするファイルを指定
+        reqChar.open("get", "https://satsuki-mito.github.io/kurobas-charactors/char.csv", true); // アクセスするファイルを指定
         reqChar.send(null); // HTTPリクエストの発行
 
         // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
@@ -41,7 +43,7 @@ $(function () {
     //middle.csvの準備1
     function getCSVMiddle() {
         var reqMiddle = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-        reqMiddle.open("get", "https://satsuki-mito.github.io/kurobas-characters/middle.csv", true); // アクセスするファイルを指定
+        reqMiddle.open("get", "https://satsuki-mito.github.io/kurobas-charactors/middle.csv", true); // アクセスするファイルを指定
         reqMiddle.send(null); // HTTPリクエストの発行
 
         // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
