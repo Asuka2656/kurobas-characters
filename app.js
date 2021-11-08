@@ -1,8 +1,8 @@
 $(function () {
     let page = (null);
     //変数「page」を設定（初期値は空）
-    getCsvChar();
-    getCsvMiddle();
+    getCSVChar();
+    getCSVMiddle();
 
     $("#tab1").click(tab(1));
     $("#tab2").click(tab(2));
