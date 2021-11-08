@@ -1,15 +1,15 @@
 $(function () {
-    let page = (null);
-    //変数「page」を設定（初期値は空）
     getCSVMiddle();
     getCSVChar();
-    callMiddle(1);
-    console.log(char[1]);
+    if(char !==null){
+        console.log(char[1]);
+    };
     
-//     $("#tab1").click(tab(1));
-//     $("#tab2").click(tab(2));
-//     $("#tab3").click(tab(3));
-//     $("#tab4").click(tab(4));
+    
+    $("#tab1").click(tab(1));
+    $("#tab2").click(tab(2));
+    $("#tab3").click(tab(3));
+    $("#tab4").click(tab(4));
 
     // for(let i = 1; i <= 28; i ++){
     //     $("#forMiddle" + i).onclick(callMiddle(i));
@@ -64,35 +64,6 @@ $(function () {
 
         console.log(middle[0][0]);
     };
-
-    // function getCsv(url, array){
-    //     //CSVファイルを文字列で取得。
-    //     var txt = new XMLHttpRequest();
-    //     txt.open('get', url, true);
-    //     txt.send();
-      
-    //     //改行ごとに配列化
-    //     var arr = txt.responseText.split('\n');
-      
-    //     //1次元配列を2次元配列に変換
-    //     var array = [];
-    //     for(var i = 0; i < arr.length; i++){
-    //       //空白行が出てきた時点で終了
-    //       if(arr[i] == '') break;
-      
-    //       //","ごとに配列化
-    //       array[i] = arr[i].split(',');
-      
-    //       for(var i2 = 0; i2 < array[i].length; i2++){
-    //         //数字の場合は「"」を削除
-    //         if(array[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)){
-    //           array[i][i2] = parseFloat(array[i][i2].replace('"', ''));
-    //         }
-    //       }
-    //     }
-      
-    //     return array;
-    //   }
 
     function Bg(num) {
         $("#bgs").css("background-image", "url(./i.backgrounds/" + num + ".svg")
@@ -196,4 +167,9 @@ $(function () {
             };
         };
     };
+
+    function page (num){
+        $("#page" + num).css("display", "block");
+        $("#page1, #page2, #page3").not("#page" + num).css("display", "none");
+    }
 });
