@@ -20,11 +20,11 @@ header {
     text-align: center;
 }
 
-td:not(.seirin table tr td, td.chars, table#names tr td, table#positions tr td) {
+td:not(#char2 table tr td, .chars, #names tr td, #positions tr td) {
     padding: 30px;
 }
 
-table:not(.seirin table) {
+table:not(#char1 table) {
     width: 100%;
     border-collapse: collapse;
     font-size: xx-large;
@@ -57,116 +57,26 @@ table:not(.seirin table) {
     transform: scale(1.1, 1.1);
 }
 
-.back {
+#back {
     text-align: end;
     font-size: large;
     font-weight: bolder;
 }
 
-.charName {
+#char1 {
     width: 50%;
+}
+
+#bgs{
+    background-size: 80px;
+    vertical-align: bottom;
 }
 
 /* ↑ここまで全ページの設定 */
 
-/* ↓ここから各ページの背景の設定 */
-
-.lightBlue {
-    background-image: url(./i.backgrounds/ball.goal.svg);
-    background-size: 80px;
-    vertical-align: bottom
-}
-
-.blue {
-    background-image: url(./i.backgrounds/guitar.microphone.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.orange {
-    background-image: url(./i.backgrounds/ball.nigo.svg);
-    background-size: 80px;
-    vertical-align: bottom
-}
-
-.deepOrange {
-    background-image: url(./i.backgrounds/tape.painapple.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.red {
-    background-image: url(./i.backgrounds/ball.coke.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.pink {
-    background-image: url(./i.backgrounds/ball.totoro.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.gray {
-    background-image: url(./i.backgrounds/ball.scissors.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.rainbow {
-    background-image: url(./i.backgrounds/ball.rainbow.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.green {
-    background-image: url(./i.backgrounds/ball.spider.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.akashi {
-    background-image: url(./i.backgrounds/forPG.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.midorima {
-    background-image: url(./i.backgrounds/forSG.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.kise {
-    background-image: url(./i.backgrounds/forSF.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.aomine {
-    background-image: url(./i.backgrounds/forPF.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.murasakibara {
-    background-image: url(./i.backgrounds/forC.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-.momoi{
-    background-image: url(./i.backgrounds/forM.svg);
-    background-size: 80px;
-    vertical-align: bottom;
-}
-
-/* ↑ここまで各ページの背景の設定 */
-
 /* ↓ここから各キャラページの背景の設定 */
 
-.seirin {
-    background-image: url(./i.badges/seirin.svg);
+#char2 {
     background-repeat: no-repeat;
     background-position: center;
     padding-left: 10%;
