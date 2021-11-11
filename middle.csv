@@ -7,7 +7,7 @@ s.yosen,3,52,16,17,37,29,ball.totoro
 s.rakuzan,40,32,22,7,4,6,ball.scissors
 s.teko,54,36,43,5,3,40,39,46,49,ball.rainbow
 s.kirisaki,27,18,20,15,10,ball.spider
-s.others,41,2,ball.goal,
+s.others,41,2,ball.goal
 p.PG,40,27,48,25,57,14,47,17,forPG
 p.SG,43,32,11,56,44,35,52,10,forSG
 p.SF,36,46,22,23,19,55,37,20,41,forSF
