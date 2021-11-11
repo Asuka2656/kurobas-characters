@@ -1,10 +1,17 @@
 $(function () {
     var char = [];
     var middle = [];
+    var middleNum = 1;
+    var callCharFrom = null;
 
     getCSVMiddle();
     getCSVChar();
     firstPrepare();
+
+    setTimeout(function(){
+        console.log(middle[middleNum][1]);
+        $("#Char1").on('click', { numC: middle[middleNum][1] }, callChar);
+    }, 300);
 
     $("#tab1").on('click', { num: 1 }, tab);
     $("#tab2").on('click', { num: 2 }, tab);
@@ -12,31 +19,54 @@ $(function () {
     $("#tab4").on('click', { num: 4 }, tab);
 
     $("#forMiddle1").on('click', { numM: 1 }, callMiddle);
-    $("#forMiddle1").on('click', { numP: 2 }, page);
+    $("#forMiddle1").on('click',function(){
+    })
 
-    $("#Char1").on('click', { numP: 3 }, page);
-    $("#Char1").on('click', { numC: 54 }, callChar);
+    // $("#Char1").on('click', { numC: middle[middleNum][1] }, callChar);
 
-    if(pageNum === 1) {
-        $("#back").css("display","none");
-    } else if (pageNum === 2) {
-        $("#back").css("display", "block");
-        $("#backFor1, #backFor2, #backFor3, #backFor4").css("display", "none");
-        $("#backFor5").css("display", "block");
+
+    function backLinks(pageNum) {
+        if (pageNum === 1) {
+            $("#back").css("display", "none");
+        } else if (pageNum === 2) {
+            $("#back").css("display", "block");
+            $("#backMiddle").css("display", "none");
+            $("#backFor5").css("display", "block");
+        } else if (pageNum === 3){
+            $("#backMiddle").css("display", "block");
+        };
+    };
+
+    function page(num) {
+        $("#page" + num).css("display", "block");
+        $("#page1, #page2, #page3, #page4").not("#page" + num).css("display", "none");
+        $(window).scrollTop(0);
+        if (num === 0) {
+            $("#page1, #page2, #page3, #page4, #back").css("display", "block");
+        } else if (num > 3) {
+            console.log("無効な引数です");
+        };
+        console.log("page(" + num + ")が呼び出されました。");
     };
 
     function Bg(str) {
         $("#bgs").css("background-image", "url(./i.backgrounds/" + str + ".svg")
     };
-    //引数bgに入れた値によって背景パターンが変わる
+    //引数strに入れた値によって背景パターンが変わる
 
     function tab(event) {
-        $("#table" + event.data.num).css("display", "block");  //選択されたタブを表示
-        $("#table1, #table2, #table3, #table4").not("#table" + event.data.num).css("display", "none");  //選択された以外のタブを非表示
-        $("#tab" + event.data.num).css("pointer-events", "none");  //選択されたタブのホバーイベントを停止
-        $("#tab1, #tab2, #tab3, #tab4").not("#tab" + event.data.num).css("pointer-events", "auto");  //選択された以外のタブのホバーイベントを開始
-        $("#backFor" + event.data.num).css("display", "block");  //選択されたタブのバックリンクを表示
-        $("#backFor1, #backFor2, #backFor3, #backFor4").not("#backFor" + event.data.num).css("display", "none");  //選択された以外のタブのバックリンクを非表示
+        $("#table" + event.data.num).css("display", "block");
+        //選択されたタブを表示
+        $("#table1, #table2, #table3, #table4").not("#table" + event.data.num).css("display", "none");
+        //選択された以外のタブを非表示
+        $("#tab" + event.data.num).css("pointer-events", "none");
+        //選択されたタブのホバーイベントを停止
+        $("#tab1, #tab2, #tab3, #tab4").not("#tab" + event.data.num).css("pointer-events", "auto");
+        //選択された以外のタブのホバーイベントを開始
+        $("#backFor" + event.data.num).css("display", "block");
+        //選択されたタブのバックリンクを表示
+        $("#backFor1, #backFor2, #backFor3, #backFor4").not("#backFor" + event.data.num).css("display", "none");
+        //選択された以外のタブのバックリンクを非表示
         console.log("tab(" + event.data.num + ")が呼び出されました");  //デバッグ用。くりっくされたよ〜。
     };
 
@@ -59,6 +89,9 @@ $(function () {
                 });
             };
         };
+        page(2);
+        backLinks(2);
+        middleNum = event.data.numM;
     };
 
     function callChar(event) {
@@ -101,23 +134,23 @@ $(function () {
                 $("#firNameHirR" + i).text(char[char[event.data.numC][24 + i]][4]);
             };
         };
+        page(3);
+        backLinks(3);
+        console.log(char[2][9]);
     };
 
-    function page(event) {
-        $("#page" + event.data.numP).css("display", "block");
-        $("#page1, #page2, #page3, #page4").not("#page" + event.data.numP).css("display", "none");
-        $(window).scrollTop(0);
-        if (event.data.numP === 0) {
-            $("#page1, #page2, #page3, #page4, #back").css("display", "block");
-        } else if (event.data.numP > 3) {
-            console.log("無効な引数です");
-        };
-        console.log("page(" + event.data.numP + ")が呼び出されました。");
-    };
+
+
+
+
 
     function firstPrepare() {
         $("#page1").css("display", "block");
         $("#page2, #page3, #page4").css("display", "none");
+
+        $("#backFor1").css("display", "block");
+        $("#backFor2, #backFor3, #backFor4").css("display", "none");
+        $("#back").css("display", "none");
         Bg('ball.goal');
     };
 
@@ -140,46 +173,15 @@ $(function () {
         // 各行ごとにカンマで区切った文字列を要素とした二次元配列を生成
         for (var i = 0; i < tmp.length; ++i) {
             char[i] = tmp[i].split(',');
-            // for (var i2 = 0; i2 < res[i].length; i2++) {
-            //     //数字の場合は「"」を削除
-            //     if (res[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)) {
-            //         res[i][i2] = parseFloat(res[i][i2].replace('"', ''));
-            //     };
-            // };
+
+            for (var i2 = 0; i2 < char[i].length; i2++) {
+                //数字の場合は「"」を削除
+                if (char[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)) {
+                    char[i][i2] = parseFloat(char[i][i2].replace('"', ''));
+                };
+            };
         };
-
-        console.log(char[0][0]);
     };
-
-    // function getCsv(url, array) {
-    //     //CSVファイルを文字列で取得。
-    //     var txt = new XMLHttpRequest();
-    //     txt.open('get', url, true);
-    //     txt.send();
-
-    //     //改行ごとに配列化
-    //     var arr = txt.responseText.split('\n');
-
-    //     //1次元配列を2次元配列に変換
-    //     var res = [];
-    //     for (var i = 0; i < arr.length; i++) {
-    //         //空白行が出てきた時点で終了
-    //         if (arr[i] == '') break;
-
-    //         //","ごとに配列化
-    //         res[i] = arr[i].split(',');
-
-    //         for (var i2 = 0; i2 < res[i].length; i2++) {
-    //             //数字の場合は「"」を削除
-    //             if (res[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)) {
-    //                 res[i][i2] = parseFloat(res[i][i2].replace('"', ''));
-    //             };
-    //         };
-    //     };
-
-    //     return res;
-    // };
-
 
     //middle.csvの準備1
     function getCSVMiddle() {
@@ -200,8 +202,13 @@ $(function () {
         // 各行ごとにカンマで区切った文字列を要素とした二次元配列を生成
         for (var i = 0; i < dev.length; ++i) {
             middle[i] = dev[i].split(',');
-        };
 
-        console.log(middle[0][0]);
+            for (var i2 = 0; i2 < middle[i].length; i2++) {
+                //数字の場合は「"」を削除
+                if (middle[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)) {
+                    middle[i][i2] = parseFloat(middle[i][i2].replace('"', ''));
+                };
+            };
+        };
     };
 });
