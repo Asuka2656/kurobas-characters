@@ -1,29 +1,17 @@
 $(function () {
     var char = [];
     var middle = [];
-    var middleNum = 1;
-    var callCharFrom = null;
+
+    $("#favicon").attr({
+        'href': "./i.favicon/seirin.svg",
+    });
 
     getCSVMiddle();
     getCSVChar();
     firstPrepare();
-
-    setTimeout(function(){
-        console.log(middle[middleNum][1]);
-        $("#Char1").on('click', { numC: middle[middleNum][1] }, callChar);
-    }, 300);
-
-    $("#tab1").on('click', { num: 1 }, tab);
-    $("#tab2").on('click', { num: 2 }, tab);
-    $("#tab3").on('click', { num: 3 }, tab);
-    $("#tab4").on('click', { num: 4 }, tab);
-
-    $("#forMiddle1").on('click', { numM: 1 }, callMiddle);
-    $("#forMiddle1").on('click',function(){
-    })
-
-    // $("#Char1").on('click', { numC: middle[middleNum][1] }, callChar);
-
+    readyMiddle();
+    readytab();
+    $("#backFor5").on('click', backForTop);
 
     function backLinks(pageNum) {
         if (pageNum === 1) {
@@ -32,7 +20,7 @@ $(function () {
             $("#back").css("display", "block");
             $("#backMiddle").css("display", "none");
             $("#backFor5").css("display", "block");
-        } else if (pageNum === 3){
+        } else if (pageNum === 3) {
             $("#backMiddle").css("display", "block");
         };
     };
@@ -71,14 +59,41 @@ $(function () {
     };
 
     function callMiddle(event) {
+        for (let i = 1; i <= 16; i++) {
+            $("#famNameChi" + i).text("");
+            $("#famNameHir" + i).text("");
+            $("#firNameChi" + i).text("");
+            $("#firNameHir" + i).text("");
+            $("#icon" + i).removeAttr('src alt');
+        };
+
+        if (middle[event.data.numM].length <= 6) {
+            $("#row1").css("display", "table-row");
+            $("#row2, #row3, #row4").css("display", "none");
+            console.log("一行");
+        } else if (6 < middle[event.data.numM].length && middle[event.data.numM].length <= 10) {
+            $("#row1, #row2").css("display", "table-row");
+            $("#row3, #row4").css("display", "none");
+            console.log("二行");
+        } else if (10 < middle[event.data.numM].length && middle[event.data.numM].length <= 14) {
+            $("#row1, #row2, #row3").css("display", "table-row");
+            $("#row4").css("display", "none");
+            console.log("三行");
+        } else if (14 < middle[event.data.numM].length) {
+            $("#row1, #row2, #row3, #row4").css("display", "table-row");
+            console.log("四行");
+        } else {
+            console.log("バグってるよ");
+        };
         for (let i = 1; i < middle[event.data.numM].length - 1; i++) {
             if (middle[event.data.numM][i] === null) {
                 break;
             } else {
                 $("#middlename").attr({
-                    'src': "./i.names/" + middle[i][middle[i].length] +".svg",
+                    'src': "./i.names/" + middle[i][middle[i].length] + ".svg",
                     'alt': middle[i][middle[i].length]
                 });
+
                 $("#famNameChi" + i).text(char[middle[event.data.numM][i]][1]);
                 $("#famNameHir" + i).text(char[middle[event.data.numM][i]][2]);
                 $("#firNameChi" + i).text(char[middle[event.data.numM][i]][3]);
@@ -91,34 +106,38 @@ $(function () {
         };
         page(2);
         backLinks(2);
-        middleNum = event.data.numM;
+        Bg(middle[event.data.numM][middle[event.data.numM].length - 1]);
+        readyChar(event.data.numM);
     };
 
     function callChar(event) {
+        page(3);
+        backLinks(3);
         $("#char1").attr({
             'src': "./i.names/n." + char[event.data.numC][8] + ".svg",
             'alt': char[event.data.numC][1] + "アイコン"
-        });
-        $("#char2").css("background-image", "url(./i.badges/" + char[event.data.numC][5] + ".svg)")
-        $("#char3").text(char[event.data.numC][9]);
-        $("#char4").text(char[event.data.numC][10]);
-        $("#char5").text(char[event.data.numC][11]);
-        $("#char6").text(char[event.data.numC][12]);
-        $("#char7").text(char[event.data.numC][13]);
-        $("#char8").text(char[event.data.numC][14] + "月" + char[event.data.numC][15] + "日");
-        $("#char9").text(char[event.data.numC][16]);
-        $("#char10").text(char[event.data.numC][17]);
-        $("#char11").text(char[event.data.numC][18]);
-        $("#char12").text(char[event.data.numC][19]);
-        $("#char13").text(char[event.data.numC][20]);
-        $("#char14").text(char[event.data.numC][21]);
+        });  //名前のsvg
+        $("#char2").css("background-image", "url(./i.badges/" + char[event.data.numC][5] + ".svg)")  //プロフ欄の背景
+        $("#char3").text(char[event.data.numC][9]);  //所属
+        $("#char4").text(char[event.data.numC][10]);  //背番号
+        $("#char5").text(char[event.data.numC][11]);  //ポシジョン
+        $("#char6").text(char[event.data.numC][12] + "cm");  //身長
+        $("#char7").text(char[event.data.numC][13] + "kg");  //体重
+        $("#char8").text(char[event.data.numC][14] + "月" + char[event.data.numC][15] + "日");  //誕生日
+        $("#char9").text(char[event.data.numC][16]);  //座右の銘
+        $("#char10").text(char[event.data.numC][17]);  //読書・人間観察
+        $("#char11").text(char[event.data.numC][18]);  //手品
+        $("#char12").text(char[event.data.numC][19]);  //好物
+        $("#char13").text(char[event.data.numC][20]);  //注目選手
+        $("#char14").text(char[event.data.numC][21]);  //声優
         $("#char15").attr({
             'src': "./i.chars/" + char[event.data.numC][0] + ".png",
             'alt': char[event.data.numC][1] + char[event.data.numC][3]
-        });
-        $("#char16").text(char[event.data.numC][22] + "<br>" + char[event.data.numC][23]);
-        $("#char17").text("「" + char[event.data.numC][24] + "」");
-        $("#char18").text(char[event.data.numC][1] + char[event.data.numC][3] + "と関係の深いキャラクター");
+        });  //立ち絵
+        $("#char16-1").text(char[event.data.numC][22]);  //紹介前半
+        $("#char16-2").text(char[event.data.numC][23]);  //紹介後半
+        $("#char17").text("「" + char[event.data.numC][24] + "」");  //名言
+        $("#char18").text(char[event.data.numC][1] + char[event.data.numC][3] + "と関係の深いキャラクター");  //関係キャラ
 
         for (let i = 1; i <= 4; i++) {
             if (char[event.data.numC][24 + i] === null) {
@@ -134,23 +153,83 @@ $(function () {
                 $("#firNameHirR" + i).text(char[char[event.data.numC][24 + i]][4]);
             };
         };
-        page(3);
-        backLinks(3);
-        console.log(char[2][9]);
     };
 
+    function readytab() {
+        $("#tab1").on('click', { num: 1 }, tab);
+        $("#tab2").on('click', { num: 2 }, tab);
+        $("#tab3").on('click', { num: 3 }, tab);
+        $("#tab4").on('click', { num: 4 }, tab);
+    };
 
+    function readyMiddle() {
+        $("#forMiddle1").on('click', { numM: 1 }, callMiddle);
+        $("#forMiddle2").on('click', { numM: 2 }, callMiddle);
+        $("#forMiddle3").on('click', { numM: 3 }, callMiddle);
+        $("#forMiddle4").on('click', { numM: 4 }, callMiddle);
+        $("#forMiddle5").on('click', { numM: 5 }, callMiddle);
+        $("#forMiddle6").on('click', { numM: 6 }, callMiddle);
+        $("#forMiddle7").on('click', { numM: 7 }, callMiddle);
+        $("#forMiddle8").on('click', { numM: 8 }, callMiddle);
+        $("#forMiddle9").on('click', { numM: 9 }, callMiddle);
+        $("#forMiddle10").on('click', { numM: 10 }, callMiddle);
+        $("#forMiddle11").on('click', { numM: 11 }, callMiddle);
+        $("#forMiddle12").on('click', { numM: 12 }, callMiddle);
+        $("#forMiddle13").on('click', { numM: 13 }, callMiddle);
+        $("#forMiddle14").on('click', { numM: 14 }, callMiddle);
+        $("#forMiddle15").on('click', { numM: 15 }, callMiddle);
+        $("#forMiddle16").on('click', { numM: 16 }, callMiddle);
+        $("#forMiddle17").on('click', { numM: 17 }, callMiddle);
+        $("#forMiddle18").on('click', { numM: 18 }, callMiddle);
+        $("#forMiddle19").on('click', { numM: 19 }, callMiddle);
+        $("#forMiddle20").on('click', { numM: 20 }, callMiddle);
+        $("#forMiddle21").on('click', { numM: 21 }, callMiddle);
+        $("#forMiddle22").on('click', { numM: 22 }, callMiddle);
+        $("#forMiddle23").on('click', { numM: 23 }, callMiddle);
+        $("#forMiddle24").on('click', { numM: 24 }, callMiddle);
+        $("#forMiddle25").on('click', { numM: 25 }, callMiddle);
+        $("#forMiddle26").on('click', { numM: 26 }, callMiddle);
+        $("#forMiddle27").on('click', { numM: 27 }, callMiddle);
+        $("#forMiddle28").on('click', { numM: 28 }, callMiddle);
+    };
 
-
+    function readyChar(num) {
+        $("#Char1").on('click', { numC: middle[num][1] }, callChar);
+        $("#Char2").on('click', { numC: middle[num][2] }, callChar);
+        $("#Char3").on('click', { numC: middle[num][3] }, callChar);
+        $("#Char4").on('click', { numC: middle[num][4] }, callChar);
+        $("#Char5").on('click', { numC: middle[num][5] }, callChar);
+        $("#Char6").on('click', { numC: middle[num][6] }, callChar);
+        $("#Char7").on('click', { numC: middle[num][7] }, callChar);
+        $("#Char8").on('click', { numC: middle[num][8] }, callChar);
+        $("#Char9").on('click', { numC: middle[num][9] }, callChar);
+        $("#Char10").on('click', { numC: middle[num][10] }, callChar);
+        $("#Char11").on('click', { numC: middle[num][11] }, callChar);
+        $("#Char12").on('click', { numC: middle[num][12] }, callChar);
+        $("#Char13").on('click', { numC: middle[num][13] }, callChar);
+        $("#Char14").on('click', { numC: middle[num][14] }, callChar);
+        $("#Char15").on('click', { numC: middle[num][15] }, callChar);
+        $("#Char16").on('click', { numC: middle[num][16] }, callChar);
+    };
 
 
     function firstPrepare() {
         $("#page1").css("display", "block");
         $("#page2, #page3, #page4").css("display", "none");
-
         $("#backFor1").css("display", "block");
         $("#backFor2, #backFor3, #backFor4").css("display", "none");
         $("#back").css("display", "none");
+        $(window).scrollTop(0);
+        Bg('ball.goal');
+    };
+
+    function backForTop() {
+        $("#page1").css("display", "block");
+        $("#page2, #page3, #page4").css("display", "none");
+        $("#backFor1").css("display", "block");
+        $("#backFor2, #backFor3, #backFor4").css("display", "none");
+        $("#back").css("display", "none");
+        $(window).scrollTop(1100);
         Bg('ball.goal');
     };
 
