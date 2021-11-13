@@ -59,13 +59,12 @@ $(function () {
     };
 
     function callMiddle(event) {
-        for (let i = 1; i <= 16; i++) {
-            $("#famNameChi" + i).text("");
-            $("#famNameHir" + i).text("");
-            $("#firNameChi" + i).text("");
-            $("#firNameHir" + i).text("");
-            $("#icon" + i).removeAttr('src alt');
-        };
+        resetMiddle();
+        page(2);
+        backLinks(2);
+        Bg(middle[event.data.numM][middle[event.data.numM].length - 1]);
+        readyChar(event.data.numM);
+        console.log(middle[event.data.numM][0]);
 
         if (middle[event.data.numM].length <= 6) {
             $("#row1").css("display", "table-row");
@@ -104,15 +103,15 @@ $(function () {
                 });
             };
         };
-        page(2);
-        backLinks(2);
-        Bg(middle[event.data.numM][middle[event.data.numM].length - 1]);
-        readyChar(event.data.numM);
     };
 
     function callChar(event) {
+        console.log(char[event.data.numC][1] + "のページが呼び出されました");
+    
+        resetChar();
         page(3);
         backLinks(3);
+
         $("#char1").attr({
             'src': "./i.names/n." + char[event.data.numC][8] + ".svg",
             'alt': char[event.data.numC][1] + "アイコン"
@@ -152,6 +151,46 @@ $(function () {
                 $("#firNameChiR" + i).text(char[char[event.data.numC][24 + i]][3]);
                 $("#firNameHirR" + i).text(char[char[event.data.numC][24 + i]][4]);
             };
+        };
+    };
+
+    function resetMiddle() {
+        for (let i = 1; i <= 16; i++) {
+            $("#famNameChi" + i).text("");
+            $("#famNameHir" + i).text("");
+            $("#firNameChi" + i).text("");
+            $("#firNameHir" + i).text("");
+            $("#icon" + i).removeAttr('src alt');
+        };
+    };
+
+    function resetChar() {
+        $("#char1").removeAttr('src alt');
+        $("#char2").css("background-image", "");
+        $("#char3").text("");
+        $("#char4").text("");
+        $("#char5").text("");
+        $("#char6").text("");
+        $("#char7").text("");
+        $("#char8").text("");
+        $("#char9").text("");
+        $("#char10").text("");
+        $("#char11").text("");
+        $("#char12").text("");
+        $("#char13").text("");
+        $("#char14").text("");
+        $("#char15").removeAttr('src alt');
+        $("#char16-1").text("");
+        $("#char16-2").text("");
+        $("#char17").text("");
+        $("#char18").text("");
+
+        for (let i = 1; i <= 4; i++) {
+            $("#famNameChiR" + i).text("");
+            $("#famNameHirR" + i).text("");
+            $("#firNameChiR" + i).text("");
+            $("#firNameHirR" + i).text("");
+            $("#iconR" + i).removeAttr('src alt');
         };
     };
 
