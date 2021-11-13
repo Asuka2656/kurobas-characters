@@ -64,7 +64,7 @@ table:not(#char1 table) {
 }
 
 #char1 {
-    width: 50%;
+    height: 200px;
 }
 
 #bgs{
@@ -265,6 +265,14 @@ td.chars {
 #forSchool, #forPosition, #forName, #forGrade, #forTop{
     display: block;
     margin: 1% 10%;
+}
+
+#char16-1{
+    margin-bottom: 0%;
+}
+
+#char16-2{
+    margin-top: 0%;
 }
 
 .hide{
