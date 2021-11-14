@@ -68,20 +68,29 @@ $(function () {
 
         if (middle[event.data.numM].length <= 6) {
             $("#row1").css("display", "table-row");
-            $("#row2, #row3, #row4").css("display", "none");
+            $("#row2, #row3, #row4, #row5, #row6").css("display", "none");
             console.log("一行");
         } else if (6 < middle[event.data.numM].length && middle[event.data.numM].length <= 10) {
             $("#row1, #row2").css("display", "table-row");
-            $("#row3, #row4").css("display", "none");
+            $("#row3, #row4, #row5, #row6").css("display", "none");
             console.log("二行");
         } else if (10 < middle[event.data.numM].length && middle[event.data.numM].length <= 14) {
             $("#row1, #row2, #row3").css("display", "table-row");
-            $("#row4").css("display", "none");
+            $("#row4, #row5, #row6").css("display", "none");
             console.log("三行");
-        } else if (14 < middle[event.data.numM].length) {
+        } else if (14 < middle[event.data.numM].length && middle[event.data.numM].length <= 18) {
             $("#row1, #row2, #row3, #row4").css("display", "table-row");
+            $("#row5, #row6").css("display", "none");
             console.log("四行");
-        } else {
+        } else if (18 < middle[event.data.numM].length && middle[event.data.numM].length <= 22) {
+            $("#row1, #row2, #row3, #row4, #row5").css("display", "table-row");
+            $("#row6").css("display", "none");
+            console.log("五行");
+        } else if (22 < middle[event.data.numM].length && middle[event.data.numM].length <= 26) {
+            $("#row1, #row2, #row3, #row4, #row5, #row6").css("display", "table-row");
+            console.log("六行");
+        }
+        else {
             console.log("バグってるよ");
         };
         for (let i = 1; i < middle[event.data.numM].length - 1; i++) {
@@ -107,7 +116,6 @@ $(function () {
 
     function callChar(event) {
         console.log(char[event.data.numC][1] + "のページが呼び出されました");
-    
         resetChar();
         page(3);
         backLinks(3);
@@ -120,9 +128,21 @@ $(function () {
         $("#char3").text(char[event.data.numC][9]);  //所属
         $("#char4").text(char[event.data.numC][10]);  //背番号
         $("#char5").text(char[event.data.numC][11]);  //ポシジョン
-        $("#char6").text(char[event.data.numC][12] + "cm");  //身長
-        $("#char7").text(char[event.data.numC][13] + "kg");  //体重
-        $("#char8").text(char[event.data.numC][14] + "月" + char[event.data.numC][15] + "日");  //誕生日
+        if (isNaN(char[event.data.numC][12])) {
+            $("#char6").text(char[event.data.numC][12]);  //身長分からん人用
+        } else {
+            $("#char6").text(char[event.data.numC][12] + "cm");  //身長
+        };
+        if (isNaN(char[event.data.numC][13])) {
+            $("#char7").text(char[event.data.numC][13]); //体重非公開の人用
+        } else {
+            $("#char7").text(char[event.data.numC][13] + "kg");  //体重
+        };
+        if (isNaN(char[event.data.numC][14])) {
+            $("#char8").text(char[event.data.numC][14]);
+        } else {
+            $("#char8").text(char[event.data.numC][14] + "月" + char[event.data.numC][15] + "日");  //誕生日
+        };
         $("#char9").text(char[event.data.numC][16]);  //座右の銘
         $("#char10").text(char[event.data.numC][17]);  //読書・人間観察
         $("#char11").text(char[event.data.numC][18]);  //手品
@@ -140,6 +160,7 @@ $(function () {
 
         for (let i = 1; i <= 4; i++) {
             if (char[event.data.numC][24 + i] === null) {
+                console.log("関係者は" + i + "人です。");
                 break;
             } else {
                 $("#iconR" + i).attr({
@@ -150,8 +171,13 @@ $(function () {
                 $("#famNameHirR" + i).text(char[char[event.data.numC][24 + i]][2]);
                 $("#firNameChiR" + i).text(char[char[event.data.numC][24 + i]][3]);
                 $("#firNameHirR" + i).text(char[char[event.data.numC][24 + i]][4]);
+
             };
         };
+        $("#relate1").on('click', { numC: char[event.data.numC][25] }, callChar);
+        $("#relate2").on('click', { numC: char[event.data.numC][26] }, callChar);
+        $("#relate3").on('click', { numC: char[event.data.numC][27] }, callChar);
+        $("#relate4").on('click', { numC: char[event.data.numC][28] }, callChar);
     };
 
     function resetMiddle() {
@@ -162,6 +188,7 @@ $(function () {
             $("#firNameHir" + i).text("");
             $("#icon" + i).removeAttr('src alt');
         };
+        console.log("ミドルページリセット完了したよ〜");
     };
 
     function resetChar() {
@@ -192,6 +219,7 @@ $(function () {
             $("#firNameHirR" + i).text("");
             $("#iconR" + i).removeAttr('src alt');
         };
+        console.log("キャラページリセット完了したよ〜");
     };
 
     function readytab() {
