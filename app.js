@@ -313,7 +313,7 @@ $(function () {
         $("#backFor2, #backFor3, #backFor4").css("display", "none");
         $("#back").css("display", "none");
         $(window).scrollTop(1100);
-        Bg('ball.goal');
+        background('ball.goal');
     };
 
     // char.csvの準備1
