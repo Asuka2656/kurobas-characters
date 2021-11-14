@@ -1,6 +1,7 @@
 $(function () {
     var char = [];
     var middle = [];
+    var middleNum = null;
 
     $("#favicon").attr({
         'href': "./i.favicon/seirin.svg",
@@ -32,7 +33,7 @@ $(function () {
         if (num === 0) {
             $("#page1, #page2, #page3, #page4, #back").css("display", "block");
         } else if (num > 3) {
-            console.log("無効な引数です");
+            console.log("表示するページを決める関数バグってるよ");
         };
         console.log("page(" + num + ")が呼び出されました。");
     };
@@ -91,7 +92,7 @@ $(function () {
             console.log("六行");
         }
         else {
-            console.log("バグってるよ");
+            console.log("使ってないミドルページ消すトコバグってるよ");
         };
         for (let i = 1; i < middle[event.data.numM].length - 1; i++) {
             if (middle[event.data.numM][i] === null) {
@@ -112,6 +113,7 @@ $(function () {
                 });
             };
         };
+        middleNum = event.data.numM;
     };
 
     function callChar(event) {
@@ -178,6 +180,18 @@ $(function () {
         $("#relate2").on('click', { numC: char[event.data.numC][26] }, callChar);
         $("#relate3").on('click', { numC: char[event.data.numC][27] }, callChar);
         $("#relate4").on('click', { numC: char[event.data.numC][28] }, callChar);
+
+        if(1 <= middleNum && middleNum <= 9){
+            $("#backFor1").on('click', {numM: middleNum}, callMiddle);
+        } else if (10 <= middleNum && middleNum <= 16){
+            $("#backFor2").on('click', {numM: middleNum}, callMiddle);
+        } else if (17 <= middleNum && middleNum <= 24){
+            $("#backFor3").on('click', {numM: middleNum}, callMiddle);
+        } else if(25 <= middleNum && middleNum <= 28){
+            $("#backFor4").on('click', {numM: middleNum}, callMiddle);
+        } else {
+            console.log("戻るリンクバグってるよ");
+        }
     };
 
     function resetMiddle() {
