@@ -24,6 +24,10 @@ td:not(#char2 table tr td, .chars, #names tr td, #positions tr td) {
     padding: 30px;
 }
 
+#char2{
+    width: 60%;
+}
+
 table:not(#char1 table) {
     width: 100%;
     border-collapse: collapse;
@@ -257,8 +261,8 @@ td.caps {
     width: 35%;
 }
 
-td.chars {
-    width: 40%;
+#char15 {
+    height: 100%;
     text-align: center;
 }
 
