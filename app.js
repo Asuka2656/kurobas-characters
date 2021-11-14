@@ -2,6 +2,7 @@ $(function () {
     var char = [];
     var middle = [];
     var middleNum = null;
+    var bgName = null;
 
     $("#favicon").attr({
         'href': "./i.favicon/seirin.svg",
@@ -38,8 +39,9 @@ $(function () {
         console.log("page(" + num + ")が呼び出されました。");
     };
 
-    function Bg(str) {
-        $("#bgs").css("background-image", "url(./i.backgrounds/" + str + ".svg")
+    function background(str) {
+        $("#bgs").css("background-image", "url(./i.backgrounds/" + str + ".svg)");
+        console.log(str);
     };
     //引数strに入れた値によって背景パターンが変わる
 
@@ -63,9 +65,10 @@ $(function () {
         resetMiddle();
         page(2);
         backLinks(2);
-        Bg(middle[event.data.numM][middle[event.data.numM].length - 1]);
+        bgName = middle[event.data.numM][middle[event.data.numM].length - 1];
+        background(bgName);
         readyChar(event.data.numM);
-        console.log(middle[event.data.numM][0]);
+        console.log(bgName);
 
         if (middle[event.data.numM].length <= 6) {
             $("#row1").css("display", "table-row");
@@ -90,8 +93,7 @@ $(function () {
         } else if (22 < middle[event.data.numM].length && middle[event.data.numM].length <= 26) {
             $("#row1, #row2, #row3, #row4, #row5, #row6").css("display", "table-row");
             console.log("六行");
-        }
-        else {
+        }else {
             console.log("使ってないミドルページ消すトコバグってるよ");
         };
         for (let i = 1; i < middle[event.data.numM].length - 1; i++) {
@@ -181,14 +183,14 @@ $(function () {
         $("#relate3").on('click', { numC: char[event.data.numC][27] }, callChar);
         $("#relate4").on('click', { numC: char[event.data.numC][28] }, callChar);
 
-        if(1 <= middleNum && middleNum <= 9){
-            $("#backFor1").on('click', {numM: middleNum}, callMiddle);
-        } else if (10 <= middleNum && middleNum <= 16){
-            $("#backFor2").on('click', {numM: middleNum}, callMiddle);
-        } else if (17 <= middleNum && middleNum <= 24){
-            $("#backFor3").on('click', {numM: middleNum}, callMiddle);
-        } else if(25 <= middleNum && middleNum <= 28){
-            $("#backFor4").on('click', {numM: middleNum}, callMiddle);
+        if (1 <= middleNum && middleNum <= 9) {
+            $("#backFor1").on('click', { numM: middleNum }, callMiddle);
+        } else if (10 <= middleNum && middleNum <= 16) {
+            $("#backFor2").on('click', { numM: middleNum }, callMiddle);
+        } else if (17 <= middleNum && middleNum <= 24) {
+            $("#backFor3").on('click', { numM: middleNum }, callMiddle);
+        } else if (25 <= middleNum && middleNum <= 28) {
+            $("#backFor4").on('click', { numM: middleNum }, callMiddle);
         } else {
             console.log("戻るリンクバグってるよ");
         }
@@ -301,7 +303,7 @@ $(function () {
         $("#backFor2, #backFor3, #backFor4").css("display", "none");
         $("#back").css("display", "none");
         $(window).scrollTop(0);
-        Bg('ball.goal');
+        background('ball.goal');
     };
 
     function backForTop() {
