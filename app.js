@@ -4,9 +4,13 @@ $(function () {
     var middleNum = null;
     var bgName = null;
 
-    $("#favicon").attr({
-        'href': "./i.favicon/seirin.svg",
+    $("#forMiddle1").on('click', function(){
+        $("#favicon").attr({
+            'href': "./i.favicon/seirin.png",
+        });
+        console.log("ファビコンが変更されました");
     });
+
 
     getCSVMiddle();
     getCSVChar();
@@ -41,7 +45,6 @@ $(function () {
 
     function background(str) {
         $("#bgs").css("background-image", "url(./i.backgrounds/" + str + ".svg)");
-        console.log(str);
     };
     //引数strに入れた値によって背景パターンが変わる
 
@@ -68,31 +71,24 @@ $(function () {
         bgName = middle[event.data.numM][middle[event.data.numM].length - 1];
         background(bgName);
         readyChar(event.data.numM);
-        console.log(bgName);
 
         if (middle[event.data.numM].length <= 6) {
             $("#row1").css("display", "table-row");
             $("#row2, #row3, #row4, #row5, #row6").css("display", "none");
-            console.log("一行");
         } else if (6 < middle[event.data.numM].length && middle[event.data.numM].length <= 10) {
             $("#row1, #row2").css("display", "table-row");
             $("#row3, #row4, #row5, #row6").css("display", "none");
-            console.log("二行");
         } else if (10 < middle[event.data.numM].length && middle[event.data.numM].length <= 14) {
             $("#row1, #row2, #row3").css("display", "table-row");
             $("#row4, #row5, #row6").css("display", "none");
-            console.log("三行");
         } else if (14 < middle[event.data.numM].length && middle[event.data.numM].length <= 18) {
             $("#row1, #row2, #row3, #row4").css("display", "table-row");
             $("#row5, #row6").css("display", "none");
-            console.log("四行");
         } else if (18 < middle[event.data.numM].length && middle[event.data.numM].length <= 22) {
             $("#row1, #row2, #row3, #row4, #row5").css("display", "table-row");
             $("#row6").css("display", "none");
-            console.log("五行");
         } else if (22 < middle[event.data.numM].length && middle[event.data.numM].length <= 26) {
             $("#row1, #row2, #row3, #row4, #row5, #row6").css("display", "table-row");
-            console.log("六行");
         } else {
             console.log("使ってないミドルページ消すトコバグってるよ");
         };
