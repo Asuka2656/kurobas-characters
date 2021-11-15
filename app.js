@@ -93,7 +93,7 @@ $(function () {
         } else if (22 < middle[event.data.numM].length && middle[event.data.numM].length <= 26) {
             $("#row1, #row2, #row3, #row4, #row5, #row6").css("display", "table-row");
             console.log("六行");
-        }else {
+        } else {
             console.log("使ってないミドルページ消すトコバグってるよ");
         };
         for (let i = 1; i < middle[event.data.numM].length - 1; i++) {
@@ -116,6 +116,8 @@ $(function () {
             };
         };
         middleNum = event.data.numM;
+        if (event.data.numM === 1) { background('ball.goal'); } else if (event.data.numM === 2) { background('guitar.microphone'); } else if (event.data.numM === 3) { background('tape.painapple'); } else if (event.data.numM === 4) { background('ball.coke'); } else if (event.data.numM === 5) { background('ball.totoro'); } else if (event.data.numM === 6) { background('ball.scissors'); } else if (event.data.numM === 7) { background('ball.rainbow'); } else if (event.data.numM === 8) { background('ball.spider'); } else if (event.data.numM === 9) { background('ball.goal'); } else if (event.data.numM === 10) { background('forPG'); } else if (event.data.numM === 11) { background('forSG'); } else if (event.data.numM === 12) { background('forSF'); } else if (event.data.numM === 13) { background('forPF'); } else if (event.data.numM === 14) { background('forC'); } else if (event.data.numM === 15) { background('forM'); } else if (event.data.numM === 16) { background('ball.goal'); } else if (event.data.numM === 17) { background('forPF'); } else if (event.data.numM === 18) { background('ball.coke'); } else if (event.data.numM === 19) { background('forM'); } else if (event.data.numM === 20) { background('ball.nigo'); } else if (event.data.numM === 21) { background('ball.rainbow'); } else if (event.data.numM === 22) { background('ball.spider'); } else if (event.data.numM === 23) { background('tape.painapple'); } else if (event.data.numM === 24) { background('forC'); } else if (event.data.numM === 25) { background('ball.goal'); } else if (event.data.numM === 26) { background('ball.nigo'); } else if (event.data.numM === 27) { background('ball.rainbow'); } else if (event.data.numM === 28) { background('ball.goal'); } else {console.log("背景表示するとこバグってるよ");};
+        //読みたかったらGoogleSpreadsheet行ってくれ
     };
 
     function callChar(event) {
