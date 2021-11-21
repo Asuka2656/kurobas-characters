@@ -3,14 +3,7 @@ $(function () {
     var middle = [];
     var middleNum = null;
     var bgName = null;
-
-    $("#forMiddle1").on('click', function(){
-        $("#favicon").attr({
-            'href': "./i.favicon/seirin.png",
-        });
-        console.log("ファビコンが変更されました");
-    });
-
+    var bgStock = [];
 
     getCSVMiddle();
     getCSVChar();
@@ -43,8 +36,17 @@ $(function () {
         console.log("page(" + num + ")が呼び出されました。");
     };
 
+    $("#forMiddle1").on('click', function(){
+        for(let i = 1; i <= 28; i ++){
+            bgStock.push(middle[i][middle[i].length - 1]);
+        };
+        console.log(bgStock);
+    });
+
     function background(str) {
+        console.log(str);
         $("#bgs").css("background-image", "url(./i.backgrounds/" + str + ".svg)");
+        console.log(str);
     };
     //引数strに入れた値によって背景パターンが変わる
 
@@ -65,11 +67,13 @@ $(function () {
     };
 
     function callMiddle(event) {
+        bgName = middle[event.data.numM][1];
+        background(bgName);
+        console.log(bgName);
         resetMiddle();
         page(2);
         backLinks(2);
-        bgName = middle[event.data.numM][middle[event.data.numM].length - 1];
-        background(bgName);
+        middleNum = event.data.numM;
         readyChar(event.data.numM);
 
         if (middle[event.data.numM].length <= 6) {
@@ -92,28 +96,26 @@ $(function () {
         } else {
             console.log("使ってないミドルページ消すトコバグってるよ");
         };
-        for (let i = 1; i < middle[event.data.numM].length - 1; i++) {
+        for (let i = 1; i < middle[event.data.numM].length; i++) {
             if (middle[event.data.numM][i] === null) {
                 break;
             } else {
                 $("#middlename").attr({
-                    'src': "./i.names/" + middle[i][middle[i].length] + ".svg",
+                    'src': "./i.names/" + middle[i][middle[i + 1].length] + ".svg",
                     'alt': middle[i][middle[i].length]
                 });
 
-                $("#famNameChi" + i).text(char[middle[event.data.numM][i]][1]);
-                $("#famNameHir" + i).text(char[middle[event.data.numM][i]][2]);
-                $("#firNameChi" + i).text(char[middle[event.data.numM][i]][3]);
-                $("#firNameHir" + i).text(char[middle[event.data.numM][i]][4]);
+                $("#famNameChi" + i).text(char[middle[event.data.numM][i + 1]][1]);
+                $("#famNameHir" + i).text(char[middle[event.data.numM][i + 1]][2]);
+                $("#firNameChi" + i).text(char[middle[event.data.numM][i + 1]][3]);
+                $("#firNameHir" + i).text(char[middle[event.data.numM][i + 1]][4]);
                 $("#icon" + i).attr({
-                    'src': "./i.icons/" + char[middle[event.data.numM][i]][8] + ".png",
-                    'alt': char[middle[event.data.numM][i]][1] + "アイコン"
+                    'src': "./i.icons/" + char[middle[event.data.numM][i + 1]][8] + ".png",
+                    'alt': char[middle[event.data.numM][i + 1]][1] + "アイコン"
                 });
             };
         };
-        middleNum = event.data.numM;
-        if (event.data.numM === 1) { background('ball.nigo'); } else if (event.data.numM === 2) { background('guitar.microphone'); } else if (event.data.numM === 3) { background('tape.painapple'); } else if (event.data.numM === 4) { background('ball.coke'); } else if (event.data.numM === 5) { background('ball.totoro'); } else if (event.data.numM === 6) { background('ball.scissors'); } else if (event.data.numM === 7) { background('ball.rainbow'); } else if (event.data.numM === 8) { background('ball.spider'); } else if (event.data.numM === 9) { background('ball.goal'); } else if (event.data.numM === 10) { background('forPG'); } else if (event.data.numM === 11) { background('forSG'); } else if (event.data.numM === 12) { background('forSF'); } else if (event.data.numM === 13) { background('forPF'); } else if (event.data.numM === 14) { background('forC'); } else if (event.data.numM === 15) { background('forM'); } else if (event.data.numM === 16) { background('ball.goal'); } else if (event.data.numM === 17) { background('forPF'); } else if (event.data.numM === 18) { background('ball.coke'); } else if (event.data.numM === 19) { background('forM'); } else if (event.data.numM === 20) { background('ball.nigo'); } else if (event.data.numM === 21) { background('ball.rainbow'); } else if (event.data.numM === 22) { background('ball.spider'); } else if (event.data.numM === 23) { background('tape.painapple'); } else if (event.data.numM === 24) { background('forC'); } else if (event.data.numM === 25) { background('ball.goal'); } else if (event.data.numM === 26) { background('ball.nigo'); } else if (event.data.numM === 27) { background('ball.rainbow'); } else if (event.data.numM === 28) { background('ball.goal'); } else {console.log("背景表示するとこバグってるよ");};
-        //読みたかったらGoogleSpreadsheet行ってくれ
+
     };
 
     function callChar(event) {
@@ -301,7 +303,8 @@ $(function () {
         $("#backFor2, #backFor3, #backFor4").css("display", "none");
         $("#back").css("display", "none");
         $(window).scrollTop(0);
-        background('ball.goal');
+        let firstBack = 'ball.goal';
+        background(firstBack);
     };
 
     function backForTop() {
