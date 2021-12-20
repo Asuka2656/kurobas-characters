@@ -1,380 +1,715 @@
-$(function () {
-    var char = [];
-    var middle = [];
-    var middleNum = null;
-    var bgName = null;
-    var bgStock = [];
+<!DOCTYPE html>
+<html lang="ja">
 
-    getCSVMiddle();
-    getCSVChar();
-    firstPrepare();
-    readyMiddle();
-    readytab();
-    $("#backFor5").on('click', backForTop);
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黒子のバスケ　キャラクター紹介</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="./i.others/favicon.svg" type="image/svg+xml"　id="favicon">
+</head>
 
-    function backLinks(pageNum) {
-        if (pageNum === 1) {
-            $("#back").css("display", "none");
-        } else if (pageNum === 2) {
-            $("#back").css("display", "block");
-            $("#backMiddle").css("display", "none");
-            $("#backFor5").css("display", "block");
-        } else if (pageNum === 3) {
-            $("#backMiddle").css("display", "block");
-        };
-    };
+<body id="bgs">
+  <header>
+    <h1 class="logo">
+      <img src="./i.others/logo.svg" alt="ロゴ">
+    </h1>
+    <a href="http://kurobas-info.sakura.ne.jp/" target="_blank" class="forSite">公式サイトへ</a>
+  </header>
 
-    function page(num) {
-        $("#page" + num).css("display", "block");
-        $("#page1, #page2, #page3, #page4").not("#page" + num).css("display", "none");
-        $(window).scrollTop(0);
-        if (num === 0) {
-            $("#page1, #page2, #page3, #page4, #back").css("display", "block");
-        } else if (num > 3) {
-            console.log("表示するページを決める関数バグってるよ");
-        };
-        console.log("page(" + num + ")が呼び出されました。");
-    };
+  <main>
+    <div id="page1">
+      <div class="keyVisual">
+        <img src="./i.others/keyvisual.png" alt="キービジュアル" class="sevens">
+      </div>
+      <div>
+        <h1>黒子のバスケ　キャラクター紹介〜〜！</h1>
+        <p>
+          どんどんぱふぱふ〜！<br><br> ……はい、調子乗りました。すみませんm(_ _)m<br>
+          大幅に旬を過ぎてからハマってしまったせいで同士が少なく、自給自足しようにも文才も絵心もない！　この溢れんばかりの黒バス愛をどこにぶつけてやろうか！！　(｀・ω・´)<br>
+          ということで、勢い余ってキャラクター紹介サイトなるものを作ってしまいました。HTML歴1ヶ月ないくらいの初心者なので、もろもろ生暖かい目で見守って下さい。<br>
+          それでは行ってみましょう！！
+        </p>
+      </div>
 
-    // $("#forMiddle1").on('click', function(){
-    //     for(let i = 1; i <= 28; i ++){
-    //         bgStock.push(middle[i][middle[i].length - 1]);
-    //     };
-    //     console.log(bgStock);
-    // });
+      <div id="links">
+        <!-- <h1>キャラクターを探す</h1> -->
+        <div class="tab">
+          <table>
+            <tr>
+              <td id="tab1">
+                学校から探す
+              </td>
+              <td id="tab2">
+                ポジションから探す
+              </td>
+              <td id="tab3">
+                名前から探す
+              </td>
+              <td id="tab4">
+                学年から探す
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="table1">
+          <table id="schools">
+            <tr>
+              <td id="forMiddle1">
+                <img src="./i.names/seirin.u.svg" alt="誠凛のユニフォーム">
+                <br> 誠凛高校
+              </td>
+              <td id="forMiddle2">
+                <img src="./i.names/kaijo.u.svg" alt="海常のユニフォーム">
+                <br> 海常高校
+              </td>
+              <td id="forMiddle3">
+                <img src="./i.names/syutoku.u.svg" alt="秀徳のユニフォーム">
+                <br> 秀徳高校
+              </td>
+            </tr>
+            <tr>
+              <td id="forMiddle4">
+                <img src="./i.names/too.u.svg" alt="桐皇のユニフォーム">
+                <br> 桐皇学園高校
+              </td>
+              <td id="forMiddle5">
+                <img src="./i.names/yosen.u.svg" alt="陽泉のユニフォーム">
+                <br> 陽泉高校
+                </a>
+              </td>
+              <td id="forMiddle6">
+                <img src="./i.names/rakuzan.u.svg" alt="洛山のユニフォーム">
+                <br> 洛山高校
+              </td>
+            </tr>
+            <tr>
+              <td id="forMiddle7">
+                <img src="./i.names/teko.u.svg" alt="帝光のユニフォーム">
+                <br> 帝光中学校
+              </td>
+              <td id="forMiddle8">
+                <img src="./i.names/kirisaki.u.svg" alt="霧崎のユニフォーム">
+                <br> 霧崎第一高校
+              </td>
+              <td id="forMiddle9">
+                <img src="./i.others/logo.svg" alt="その他">
+                <br> その他
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="table2">
+          <table id="positions">
+            <tr>
+              <td id="forMiddle10">
+                PG（ポイントガード）
+              </td>
+              <td id="forMiddle11">
+                SG（シューティングガード）
+              </td>
+            </tr>
+            <tr>
+              <td id="forMiddle12">
+                SF（スモールフォワード）
+              </td>
+              <td id="forMiddle13">
+                PF（パワーフォワード）
+              </td>
+            </tr>
+            <tr>
+              <td id="forMiddle14">
+                C（センター）
+              </td>
+              <td id="forMiddle15">
+                指導陣
+              </td>
+            </tr>
+            <tr>
+              <td id="forMiddle16">
+                その他
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="table3">
+          <table id="names">
+            <tr>
+              <td id="forMiddle17">
+                ア行
+              </td>
+              <td class="space" id="forMiddle18">
+                カ行
+              </td>
+              <td id="forMiddle19">
+                サ行
+              </td>
+            </tr>
+            <tr>
+              <td id="forMiddle20">
+                タ行
+              </td>
+              <td class="space" id="forMiddle21">
+                ナ行
+              </td>
+              <td id="forMiddle22">
+                ハ行
+              </td>
+            </tr>
+            <tr>
+              <td id="forMiddle23">
+                マ行
+              </td>
+              <td class="space" id="forMiddle24">
+                ヤ〜ワ行
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="table4">
+          <table id="grades">
+            <tr>
+              <td id="forMiddle25">
+                高校1年生
+              </td>
+              <td id="forMiddle26">
+                高校2年生
+              </td>
+              <td id="forMiddle27">
+                高校3年生
+              </td>
+              <td id="forMiddle28">
+                その他
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
 
-    function background(str) {
-        console.log(str);
-        $("#bgs").css("background-image", "url(./i.backgrounds/" + str + ".svg)");
-        console.log(str);
-    };
-    //引数strに入れた値によって背景パターンが変わる
+    <div id="page2">
+      <div>
+        <img id="middleName" src="" alt=""></img>
+        <p id="direction">
+          <br>
+        </p>
+      </div>
 
-    function tab(event) {
-        $("#table" + event.data.num).css("display", "block");
-        //選択されたタブを表示
-        $("#table1, #table2, #table3, #table4").not("#table" + event.data.num).css("display", "none");
-        //選択された以外のタブを非表示
-        $("#tab" + event.data.num).css("pointer-events", "none");
-        //選択されたタブのホバーイベントを停止
-        $("#tab1, #tab2, #tab3, #tab4").not("#tab" + event.data.num).css("pointer-events", "auto");
-        //選択された以外のタブのホバーイベントを開始
-        $("#backFor" + event.data.num).css("display", "block");
-        //選択されたタブのバックリンクを表示
-        $("#backFor1, #backFor2, #backFor3, #backFor4").not("#backFor" + event.data.num).css("display", "none");
-        //選択された以外のタブのバックリンクを非表示
-        console.log("tab(" + event.data.num + ")が呼び出されました");  //デバッグ用。くりっくされたよ〜。
-    };
+      <div class="members">
+        <table>
+          <tr id="row1">
+            <td id="Char1">
+              <ruby>
+                <rb id="famNameChi1"></rb>
+                <rt id="famNameHir1"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi1"></rb>
+                <rt id="firNameHir1"></rt>
+              </ruby>
+              <br>
+              <img id="icon1" src="" alt="">
+              <!-- ./i.icons/.png -->
+            </td>
+            <td id="Char2">
+              <ruby>
+                <rb id="famNameChi2"></rb>
+                <rt id="famNameHir2"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi2"></rb>
+                <rt id="firNameHir2"></rt>
+              </ruby>
+              <br>
+              <img id="icon2" src="" alt="">
+            </td>
+            <td id="Char3">
+              <ruby>
+                <rb id="famNameChi3"></rb>
+                <rt id="famNameHir3"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi3"></rb>
+                <rt id="firNameHir3"></rt>
+              </ruby>
+              <br>
+              <img id="icon3" src="" alt="">
+            </td>
+            <td id="Char4">
+              <ruby>
+                <rb id="famNameChi4"></rb>
+                <rt id="famNameHir4"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi4"></rb>
+                <rt id="firNameHir4"></rt>
+              </ruby>
+              <br>
+              <img id="icon4" src="" alt="">
+            </td>
+          </tr>
+          <tr id="row2">
+            <td id="Char5">
+              <ruby>
+                <rb id="famNameChi5"></rb>
+                <rt id="famNameHir5"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi5"></rb>
+                <rt id="firNameHir5"></rt>
+              </ruby>
+              <br>
+              <img id="icon5" src="" alt="">
+              <!-- srcはあとで消す -->
+            </td>
+            <td id="Char6">
+              <ruby>
+                <rb id="famNameChi6"></rb>
+                <rt id="famNameHir6"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi6"></rb>
+                <rt id="firNameHir6"></rt>
+              </ruby>
+              <br>
+              <img id="icon6" src="" alt="">
+            </td>
+            <td id="Char7">
+              <ruby>
+                <rb id="famNameChi7"></rb>
+                <rt id="famNameHir7"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi7"></rb>
+                <rt id="firNameHir7"></rt>
+              </ruby>
+              <br>
+              <img id="icon7" src="" alt="">
+            </td>
+            <td id="Char8">
+              <ruby>
+                <rb id="famNameChi8"></rb>
+                <rt id="famNameHir8"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi8"></rb>
+                <rt id="firNameHir8"></rt>
+              </ruby>
+              <br>
+              <img id="icon8" src="" alt="">
+            </td>
+          </tr>
+          <tr id="row3">
+            <td id="Char9">
+              <ruby>
+                <rb id="famNameChi9"></rb>
+                <rt id="famNameHir9"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi9"></rb>
+                <rt id="firNameHir9"></rt>
+              </ruby>
+              <br>
+              <img id="icon9" src="" alt="">
+              <!-- srcはあとで消す -->
+            </td>
+            <td id="Char10">
+              <ruby>
+                <rb id="famNameChi10"></rb>
+                <rt id="famNameHir10"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi10"></rb>
+                <rt id="firNameHir10"></rt>
+              </ruby>
+              <br>
+              <img id="icon10" src="" alt="">
+            </td>
+            <td id="Char11">
+              <ruby>
+                <rb id="famNameChi11"></rb>
+                <rt id="famNameHir11"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi11"></rb>
+                <rt id="firNameHir11"></rt>
+              </ruby>
+              <br>
+              <img id="icon11" src="" alt="">
+            </td>
+            <td id="Char12">
+              <ruby>
+                <rb id="famNameChi12"></rb>
+                <rt id="famNameHir12"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi12"></rb>
+                <rt id="firNameHir12"></rt>
+              </ruby>
+              <br>
+              <img id="icon12" src="" alt="">
+            </td>
+          </tr>
+          <tr id="row4">
+            <td id="Char13">
+              <ruby>
+                <rb id="famNameChi13"></rb>
+                <rt id="famNameHir13"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi13"></rb>
+                <rt id="firNameHir13"></rt>
+              </ruby>
+              <br>
+              <img id="icon13" src="" alt="">
+              <!-- srcはあとで消す -->
+            </td>
+            <td id="Char14">
+              <ruby>
+                <rb id="famNameChi14"></rb>
+                <rt id="famNameHir14"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi14"></rb>
+                <rt id="firNameHir14"></rt>
+              </ruby>
+              <br>
+              <img id="icon14" src="" alt="">
+            </td>
+            <td id="Char15">
+              <ruby>
+                <rb id="famNameChi15"></rb>
+                <rt id="famNameHir15"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi15"></rb>
+                <rt id="firNameHir15"></rt>
+              </ruby>
+              <br>
+              <img id="icon15" src="" alt="">
+            </td>
+            <td id="Char16">
+              <ruby>
+                <rb id="famNameChi16"></rb>
+                <rt id="famNameHir16"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi16"></rb>
+                <rt id="firNameHir16"></rt>
+              </ruby>
+              <br>
+              <img id="icon16" src="" alt="">
+            </td>
+          </tr>
+          <tr id="row5">
+            <td id="Char17">
+              <ruby>
+                <rb id="famNameChi17"></rb>
+                <rt id="famNameHir17"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi17"></rb>
+                <rt id="firNameHir17"></rt>
+              </ruby>
+              <br>
+              <img id="icon17" src="" alt="">
+              <!-- srcはあとで消す -->
+            </td>
+            <td id="Char18">
+              <ruby>
+                <rb id="famNameChi18"></rb>
+                <rt id="famNameHir18"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi18"></rb>
+                <rt id="firNameHir18"></rt>
+              </ruby>
+              <br>
+              <img id="icon18" src="" alt="">
+            </td>
+            <td id="Char19">
+              <ruby>
+                <rb id="famNameChi19"></rb>
+                <rt id="famNameHir19"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi19"></rb>
+                <rt id="firNameHir19"></rt>
+              </ruby>
+              <br>
+              <img id="icon19" src="" alt="">
+            </td>
+            <td id="Char20">
+              <ruby>
+                <rb id="famNameChi20"></rb>
+                <rt id="famNameHir20"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi20"></rb>
+                <rt id="firNameHir20"></rt>
+              </ruby>
+              <br>
+              <img id="icon20" src="" alt="">
+            </td>
+          </tr>
+          <tr id="row6">
+            <td id="Char21">
+              <ruby>
+                <rb id="famNameChi21"></rb>
+                <rt id="famNameHir21"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi21"></rb>
+                <rt id="firNameHir21"></rt>
+              </ruby>
+              <br>
+              <img id="icon21" src="" alt="">
+              <!-- srcはあとで消す -->
+            </td>
+            <td id="Char22">
+              <ruby>
+                <rb id="famNameChi22"></rb>
+                <rt id="famNameHir2"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi22"></rb>
+                <rt id="firNameHir22"></rt>
+              </ruby>
+              <br>
+              <img id="icon22" src="" alt="">
+            </td>
+            <td id="Char23">
+              <ruby>
+                <rb id="famNameChi23"></rb>
+                <rt id="famNameHir23"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi23"></rb>
+                <rt id="firNameHir23"></rt>
+              </ruby>
+              <br>
+              <img id="icon23" src="" alt="">
+            </td>
+            <td id="Char24">
+              <ruby>
+                <rb id="famNameChi24"></rb>
+                <rt id="famNameHir24"></rt>
+              </ruby>　
+              <!-- </ruby>の後ろにスペースあるよ -->
+              <ruby>
+                <rb id="firNameChi24"></rb>
+                <rt id="firNameHir24"></rt>
+              </ruby>
+              <br>
+              <img id="icon24" src="" alt="">
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
 
-    function callMiddle(event) {
-        // bgName = middle[event.data.numM][middle[event.data.numM].length - 1];
-        // background(bgName);
-        // console.log(bgName);
-        if (event.data.numM === 1) { background('ball.nigo'); } else if (event.data.numM === 2) { background('guitar.microphone'); } else if (event.data.numM === 3) { background('tape.painapple'); } else if (event.data.numM === 4) { background('ball.coke'); } else if (event.data.numM === 5) { background('ball.totoro'); } else if (event.data.numM === 6) { background('ball.scissors'); } else if (event.data.numM === 7) { background('ball.rainbow'); } else if (event.data.numM === 8) { background('ball.spider'); } else if (event.data.numM === 9) { background('ball.goal'); } else if (event.data.numM === 10) { background('forPG'); } else if (event.data.numM === 11) { background('forSG'); } else if (event.data.numM === 12) { background('forSF'); } else if (event.data.numM === 13) { background('forPF'); } else if (event.data.numM === 14) { background('forC'); } else if (event.data.numM === 15) { background('forM'); } else if (event.data.numM === 16) { background('ball.goal'); } else if (event.data.numM === 17) { background('forPF'); } else if (event.data.numM === 18) { background('ball.coke'); } else if (event.data.numM === 19) { background('forM'); } else if (event.data.numM === 20) { background('ball.nigo'); } else if (event.data.numM === 21) { background('ball.rainbow'); } else if (event.data.numM === 22) { background('ball.spider'); } else if (event.data.numM === 23) { background('tape.painapple'); } else if (event.data.numM === 24) { background('forC'); } else if (event.data.numM === 25) { background('ball.goal'); } else if (event.data.numM === 26) { background('ball.nigo'); } else if (event.data.numM === 27) { background('ball.rainbow'); } else if (event.data.numM === 28) { background('ball.goal'); } else {console.log("背景表示するとこバグってるよ");};
-        //読みたかったらGoogleSpreadsheet行ってくれ
-        resetMiddle();
-        page(2);
-        backLinks(2);
-        middleNum = event.data.numM;
-        readyChar(event.data.numM);
+    <div id="page3">
+      <img src="" alt="" id="char1">
+      <!-- ./i.names/n..svg -->
+      <table>
+        <tr>
+          <td id="char2">
+            <table>
+              <tr>
+                <td class="caps">所属</td>
+                <td id="char3"></td>
+              </tr>
+              <tr>
+                <td class="caps">背番号</td>
+                <td id="char4"></td>
+              </tr>
+              <tr>
+                <td class="caps">ポジション</td>
+                <td id="char5"></td>
+              </tr>
+              <tr>
+                <td class="caps">身長</td>
+                <td id="char6"></td>
+              </tr>
+              <tr>
+                <td class="caps">体重</td>
+                <td id="char7"></td>
+              </tr>
+              <tr>
+                <td class="caps">誕生日</td>
+                <td id="char8"></td>
+              </tr>
+              <tr>
+                <td class="caps">座右の銘</td>
+                <td id="char9"></td>
+              </tr>
+              <tr>
+                <td class="caps">趣味</td>
+                <td id="char10"></td>
+              </tr>
+              <tr>
+                <td class="caps">特技</td>
+                <td id="char11"></td>
+              </tr>
+              <tr>
+                <td class="caps">好物</td>
+                <td id="char12"></td>
+              </tr>
+              <tr>
+                <td class="caps">注目選手</td>
+                <td id="char13"></td>
+              </tr>
+              <tr>
+                <td class="caps">声優</td>
+                <td id="char14"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="chars">
+            <img src="" alt="" id="char15">
+            <!-- ../i.chars/.png -->
+          </td>
+        </tr>
+      </table>
+      <p id="char16-1"></p>
+      <p id="char16-2"></p>
+      <p id="char17">
+        「」
+      </p>
+      <br>
+      <div class="relate">
+        <h1 id="char18"></h1>
+        <!-- と関係の深いキャラクター -->
+        <table>
+          <tr>
+            <td>
+              <table>
+                <tr id="relate1">
+                  <td>
+                    <img src="" alt="" id="iconR1">
+                    <!-- ../i.icons/.png -->
+                  </td>
+                  <td>
+                    <ruby>
+                      <rb id="famNameChiR1"></rb>
+                      <rt id="famNameHirR1"></rt>
+                    </ruby>　
+                    <!-- </ruby>の後ろにスペースあるよ -->
+                    <ruby>
+                      <rb id="firNameChiR1"></rb>
+                      <rt id="firNameHirR1"></rt>
+                    </ruby>
+                  </td>
+                </tr>
+                <tr id="relate2">
+                  <td>
+                    <img src="" alt="" id="iconR2">
+                  </td>
+                  <td>
+                    <ruby>
+                      <rb id="famNameChiR2"></rb>
+                      <rt id="famNameHirR2"></rt>
+                    </ruby>　
+                    <!-- </ruby>の後ろにスペースあるよ -->
+                    <ruby>
+                      <rb id="firNameChiR2"></rb>
+                      <rt id="firNameHirR2"></rt>
+                    </ruby>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr id="relate3">
+                  <td>
+                    <img src="" alt="" id="iconR3">
+                  </td>
+                  <td>
+                    <ruby>
+                      <rb id="famNameChiR3"></rb>
+                      <rt id="famNameHirR3"></rt>
+                    </ruby>　
+                    <!-- </ruby>の後ろにスペースあるよ -->
+                    <ruby>
+                      <rb id="firNameChiR3"></rb>
+                      <rt id="firNameHirR3"></rt>
+                    </ruby>
+                  </td>
+                </tr>
+                <tr id="relate4">
+                  <td>
+                    <img src="" alt="" id="iconR4">
+                  </td>
+                  <td>
+                    <ruby>
+                      <rb id="famNameChiR4"></rb>
+                      <rt id="famNameHirR4"></rt>
+                    </ruby>　
+                    <!-- </ruby>の後ろにスペースあるよ -->
+                    <ruby>
+                      <rb id="firNameChiR4"></rb>
+                      <rt id="firNameHirR4"></rt>
+                    </ruby>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
 
-        if (middle[event.data.numM].length <= 6) {
-            $("#row1").css("display", "table-row");
-            $("#row2, #row3, #row4, #row5, #row6").css("display", "none");
-        } else if (6 < middle[event.data.numM].length && middle[event.data.numM].length <= 10) {
-            $("#row1, #row2").css("display", "table-row");
-            $("#row3, #row4, #row5, #row6").css("display", "none");
-        } else if (10 < middle[event.data.numM].length && middle[event.data.numM].length <= 14) {
-            $("#row1, #row2, #row3").css("display", "table-row");
-            $("#row4, #row5, #row6").css("display", "none");
-        } else if (14 < middle[event.data.numM].length && middle[event.data.numM].length <= 18) {
-            $("#row1, #row2, #row3, #row4").css("display", "table-row");
-            $("#row5, #row6").css("display", "none");
-        } else if (18 < middle[event.data.numM].length && middle[event.data.numM].length <= 22) {
-            $("#row1, #row2, #row3, #row4, #row5").css("display", "table-row");
-            $("#row6").css("display", "none");
-        } else if (22 < middle[event.data.numM].length && middle[event.data.numM].length <= 26) {
-            $("#row1, #row2, #row3, #row4, #row5, #row6").css("display", "table-row");
-        } else {
-            console.log("使ってないミドルページ消すトコバグってるよ");
-        };
-        for (let i = 1; i < middle[event.data.numM].length - 1; i++) {
-            if (middle[event.data.numM][i] === null) {
-                break;
-            } else {
-                $("#middlename").attr({
-                    'src': "./i.names/" + middle[i][middle[i].length] + ".svg",
-                    'alt': middle[i][middle[i].length]
-                });
+    <div id="back">
+      <div id="backMiddle">
+        <div id="backFor1">学校ページに戻る</div>
+        <div id="backFor2">ポジションページに戻る</div>
+        <div id="backFor3">名前ページに戻る</div>
+        <div id="backFor4">学年ページに戻る</div>
+      </div>
+      <br>
+      <div id="backFor5">トップページに戻る</div>
+    </div>
+  </main>
 
-                $("#famNameChi" + i).text(char[middle[event.data.numM][i]][1]);
-                $("#famNameHir" + i).text(char[middle[event.data.numM][i]][2]);
-                $("#firNameChi" + i).text(char[middle[event.data.numM][i]][3]);
-                $("#firNameHir" + i).text(char[middle[event.data.numM][i]][4]);
-                $("#icon" + i).attr({
-                    'src': "./i.icons/" + char[middle[event.data.numM][i]][8] + ".png",
-                    'alt': char[middle[event.data.numM][i]][1] + "アイコン"
-                });
-            };
-        };
-    };
+  <footer>
+    <div class="footerInner">
+      <p>
+        <strong>黒子のバスケ</strong><br>
+        藤巻忠俊の初連載作品。週刊少年ジャンプにて、2009年2号から2014年40号まで連載される。<br><br>
+        本webサイトはのーぶが独断と偏見に基づいて制作したもので、作者の藤巻先生及び集英社・黒子のバスケ制作委員会様とは全く関係ありません。
+      </p>
+      <small>
+        &copy; 藤巻忠俊　／　集英社・黒子のバスケ制作委員会
+      </small>
+    </div>
+  </footer>
+  <script src="./jquery-3.6.0.min.js"></script>
+  <script src="./app.js"></script>
+</body>
 
-    function callChar(event) {
-        console.log(char[event.data.numC][1] + "のページが呼び出されました");
-        background(char[event.data.numC][6]);
-        // if(event.data.numC === 1){background('ball.nigo');}
-        resetChar();
-        page(3);
-        backLinks(3);
-
-        $("#char1").attr({
-            'src': "./i.names/n." + char[event.data.numC][8] + ".svg",
-            'alt': char[event.data.numC][1] + "アイコン"
-        });  //名前のsvg
-        $("#char2").css("background-image", "url(./i.badges/" + char[event.data.numC][5] + ".svg)")  //プロフ欄の背景
-        $("#char3").text(char[event.data.numC][9]);  //所属
-        $("#char4").text(char[event.data.numC][10]);  //背番号
-        $("#char5").text(char[event.data.numC][11]);  //ポシジョン
-        if (isNaN(char[event.data.numC][12])) {
-            $("#char6").text(char[event.data.numC][12]);  //身長分からん人用
-        } else {
-            $("#char6").text(char[event.data.numC][12] + "cm");  //身長
-        };
-        if (isNaN(char[event.data.numC][13])) {
-            $("#char7").text(char[event.data.numC][13]); //体重非公開の人用
-        } else {
-            $("#char7").text(char[event.data.numC][13] + "kg");  //体重
-        };
-        if (isNaN(char[event.data.numC][14])) {
-            $("#char8").text(char[event.data.numC][14]);
-        } else {
-            $("#char8").text(char[event.data.numC][14] + "月" + char[event.data.numC][15] + "日");  //誕生日
-        };
-        $("#char9").text(char[event.data.numC][16]);  //座右の銘
-        $("#char10").text(char[event.data.numC][17]);  //読書・人間観察
-        $("#char11").text(char[event.data.numC][18]);  //手品
-        $("#char12").text(char[event.data.numC][19]);  //好物
-        $("#char13").text(char[event.data.numC][20]);  //注目選手
-        $("#char14").text(char[event.data.numC][21]);  //声優
-        $("#char15").attr({
-            'src': "./i.chars/" + char[event.data.numC][0] + ".png",
-            'alt': char[event.data.numC][1] + char[event.data.numC][3]
-        });  //立ち絵
-        $("#char16-1").text(char[event.data.numC][22]);  //紹介前半
-        $("#char16-2").text(char[event.data.numC][23]);  //紹介後半
-        $("#char17").text("「" + char[event.data.numC][24] + "」");  //名言
-        $("#char18").text(char[event.data.numC][1] + char[event.data.numC][3] + "と関係の深いキャラクター");  //関係キャラ
-
-        for (let i = 1; i <= 4; i++) {
-            if (char[event.data.numC][24 + i] === null) {
-                console.log("関係者は" + i + "人です。");
-                break;
-            } else {
-                $("#iconR" + i).attr({
-                    'src': "./i.icons/" + char[char[event.data.numC][24 + i]][8] + ".png",
-                    'alt': char[char[event.data.numC][24 + i]][1] + "アイコン"
-                });
-                $("#famNameChiR" + i).text(char[char[event.data.numC][24 + i]][1]);
-                $("#famNameHirR" + i).text(char[char[event.data.numC][24 + i]][2]);
-                $("#firNameChiR" + i).text(char[char[event.data.numC][24 + i]][3]);
-                $("#firNameHirR" + i).text(char[char[event.data.numC][24 + i]][4]);
-
-            };
-        };
-        $("#relate1").on('click', { numC: char[event.data.numC][25] }, callChar);
-        $("#relate2").on('click', { numC: char[event.data.numC][26] }, callChar);
-        $("#relate3").on('click', { numC: char[event.data.numC][27] }, callChar);
-        $("#relate4").on('click', { numC: char[event.data.numC][28] }, callChar);
-
-        if (1 <= middleNum && middleNum <= 9) {
-            $("#backFor1").on('click', { numM: middleNum }, callMiddle);
-        } else if (10 <= middleNum && middleNum <= 16) {
-            $("#backFor2").on('click', { numM: middleNum }, callMiddle);
-        } else if (17 <= middleNum && middleNum <= 24) {
-            $("#backFor3").on('click', { numM: middleNum }, callMiddle);
-        } else if (25 <= middleNum && middleNum <= 28) {
-            $("#backFor4").on('click', { numM: middleNum }, callMiddle);
-        } else {
-            console.log("戻るリンクバグってるよ");
-        }
-    };
-
-    function resetMiddle() {
-        for (let i = 1; i <= 16; i++) {
-            $("#famNameChi" + i).text("");
-            $("#famNameHir" + i).text("");
-            $("#firNameChi" + i).text("");
-            $("#firNameHir" + i).text("");
-            $("#icon" + i).removeAttr('src alt');
-        };
-        console.log("ミドルページリセット完了したよ〜");
-    };
-
-    function resetChar() {
-        $("#char1").removeAttr('src alt');
-        $("#char2").css("background-image", "");
-        $("#char3").text("");
-        $("#char4").text("");
-        $("#char5").text("");
-        $("#char6").text("");
-        $("#char7").text("");
-        $("#char8").text("");
-        $("#char9").text("");
-        $("#char10").text("");
-        $("#char11").text("");
-        $("#char12").text("");
-        $("#char13").text("");
-        $("#char14").text("");
-        $("#char15").removeAttr('src alt');
-        $("#char16-1").text("");
-        $("#char16-2").text("");
-        $("#char17").text("");
-        $("#char18").text("");
-
-        for (let i = 1; i <= 4; i++) {
-            $("#famNameChiR" + i).text("");
-            $("#famNameHirR" + i).text("");
-            $("#firNameChiR" + i).text("");
-            $("#firNameHirR" + i).text("");
-            $("#iconR" + i).removeAttr('src alt');
-        };
-        console.log("キャラページリセット完了したよ〜");
-    };
-
-    function readytab() {
-        $("#tab1").on('click', { num: 1 }, tab);
-        $("#tab2").on('click', { num: 2 }, tab);
-        $("#tab3").on('click', { num: 3 }, tab);
-        $("#tab4").on('click', { num: 4 }, tab);
-    };
-
-    function readyMiddle() {
-        $("#forMiddle1").on('click', { numM: 1 }, callMiddle);
-        $("#forMiddle2").on('click', { numM: 2 }, callMiddle);
-        $("#forMiddle3").on('click', { numM: 3 }, callMiddle);
-        $("#forMiddle4").on('click', { numM: 4 }, callMiddle);
-        $("#forMiddle5").on('click', { numM: 5 }, callMiddle);
-        $("#forMiddle6").on('click', { numM: 6 }, callMiddle);
-        $("#forMiddle7").on('click', { numM: 7 }, callMiddle);
-        $("#forMiddle8").on('click', { numM: 8 }, callMiddle);
-        $("#forMiddle9").on('click', { numM: 9 }, callMiddle);
-        $("#forMiddle10").on('click', { numM: 10 }, callMiddle);
-        $("#forMiddle11").on('click', { numM: 11 }, callMiddle);
-        $("#forMiddle12").on('click', { numM: 12 }, callMiddle);
-        $("#forMiddle13").on('click', { numM: 13 }, callMiddle);
-        $("#forMiddle14").on('click', { numM: 14 }, callMiddle);
-        $("#forMiddle15").on('click', { numM: 15 }, callMiddle);
-        $("#forMiddle16").on('click', { numM: 16 }, callMiddle);
-        $("#forMiddle17").on('click', { numM: 17 }, callMiddle);
-        $("#forMiddle18").on('click', { numM: 18 }, callMiddle);
-        $("#forMiddle19").on('click', { numM: 19 }, callMiddle);
-        $("#forMiddle20").on('click', { numM: 20 }, callMiddle);
-        $("#forMiddle21").on('click', { numM: 21 }, callMiddle);
-        $("#forMiddle22").on('click', { numM: 22 }, callMiddle);
-        $("#forMiddle23").on('click', { numM: 23 }, callMiddle);
-        $("#forMiddle24").on('click', { numM: 24 }, callMiddle);
-        $("#forMiddle25").on('click', { numM: 25 }, callMiddle);
-        $("#forMiddle26").on('click', { numM: 26 }, callMiddle);
-        $("#forMiddle27").on('click', { numM: 27 }, callMiddle);
-        $("#forMiddle28").on('click', { numM: 28 }, callMiddle);
-    };
-
-    function readyChar(num) {
-        $("#Char1").on('click', { numC: middle[num][1] }, callChar);
-        $("#Char2").on('click', { numC: middle[num][2] }, callChar);
-        $("#Char3").on('click', { numC: middle[num][3] }, callChar);
-        $("#Char4").on('click', { numC: middle[num][4] }, callChar);
-        $("#Char5").on('click', { numC: middle[num][5] }, callChar);
-        $("#Char6").on('click', { numC: middle[num][6] }, callChar);
-        $("#Char7").on('click', { numC: middle[num][7] }, callChar);
-        $("#Char8").on('click', { numC: middle[num][8] }, callChar);
-        $("#Char9").on('click', { numC: middle[num][9] }, callChar);
-        $("#Char10").on('click', { numC: middle[num][10] }, callChar);
-        $("#Char11").on('click', { numC: middle[num][11] }, callChar);
-        $("#Char12").on('click', { numC: middle[num][12] }, callChar);
-        $("#Char13").on('click', { numC: middle[num][13] }, callChar);
-        $("#Char14").on('click', { numC: middle[num][14] }, callChar);
-        $("#Char15").on('click', { numC: middle[num][15] }, callChar);
-        $("#Char16").on('click', { numC: middle[num][16] }, callChar);
-    };
-
-
-    function firstPrepare() {
-        $("#page1").css("display", "block");
-        $("#page2, #page3, #page4").css("display", "none");
-        $("#backFor1").css("display", "block");
-        $("#backFor2, #backFor3, #backFor4").css("display", "none");
-        $("#back").css("display", "none");
-        $(window).scrollTop(0);
-        let firstBack = 'ball.goal';
-        background(firstBack);
-    };
-
-    function backForTop() {
-        $("#page1").css("display", "block");
-        $("#page2, #page3, #page4").css("display", "none");
-        $("#backFor1").css("display", "block");
-        $("#backFor2, #backFor3, #backFor4").css("display", "none");
-        $("#back").css("display", "none");
-        $(window).scrollTop(1100);
-        background('ball.goal');
-    };
-
-    // char.csvの準備1
-    function getCSVChar() {
-        var reqChar = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-        reqChar.open("get", "https://satsuki-mito.github.io/kurobas-characters/char.csv", true); // アクセスするファイルを指定
-        reqChar.send(null); // HTTPリクエストの発行
-
-        // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
-        reqChar.onload = function () {
-            convertCSVtoArrayChar(reqChar.responseText); // 渡されるのは読み込んだCSVデータ
-        };
-    };
-
-    // char.csvの準備2
-    function convertCSVtoArrayChar(str) { // 読み込んだCSVデータが文字列として渡される
-        var tmp = str.split("\n"); // 改行を区切り文字として行を要素とした配列を生成
-
-        // 各行ごとにカンマで区切った文字列を要素とした二次元配列を生成
-        for (var i = 0; i < tmp.length; ++i) {
-            char[i] = tmp[i].split(',');
-
-            for (var i2 = 0; i2 < char[i].length; i2++) {
-                //数字の場合は「"」を削除
-                if (char[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)) {
-                    char[i][i2] = parseFloat(char[i][i2].replace('"', ''));
-                };
-            };
-        };
-    };
-
-    //middle.csvの準備1
-    function getCSVMiddle() {
-        var reqMiddle = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-        reqMiddle.open("get", "https://satsuki-mito.github.io/kurobas-characters/middle.csv", true); // アクセスするファイルを指定
-        reqMiddle.send(null); // HTTPリクエストの発行
-
-        // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
-        reqMiddle.onload = function () {
-            convertCSVtoArrayMiddle(reqMiddle.responseText); // 渡されるのは読み込んだCSVデータ
-        };
-    };
-
-    // middle.csvの準備2
-    function convertCSVtoArrayMiddle(str) { // 読み込んだCSVデータが文字列として渡される
-        var dev = str.split("\n"); // 改行を区切り文字として行を要素とした配列を生成
-
-        // 各行ごとにカンマで区切った文字列を要素とした二次元配列を生成
-        for (var i = 0; i < dev.length; ++i) {
-            middle[i] = dev[i].split(',');
-
-            for (var i2 = 0; i2 < middle[i].length; i2++) {
-                //数字の場合は「"」を削除
-                if (middle[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)) {
-                    middle[i][i2] = parseFloat(middle[i][i2].replace('"', ''));
-                };
-            };
-        };
-    };
-});
+</html>
